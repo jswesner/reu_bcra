@@ -1,0 +1,40 @@
+date,id,location,trt,pH,cond_uS,temp_C,depth_cm,do_mgL
+19-Jun-17,1,Below,Ambient,8.06,1291,22.50,45.40,
+19-Jun-17,2,Below,Exclusion,8.04,1287,22.50,40.00,
+19-Jun-17,3,Below,Exclusion,8.07,1285,22.50,55.50,
+19-Jun-17,4,Below,Ambient,8.05,1283,22.50,64.10,
+19-Jun-17,5,Below,Exclusion,8.02,1290,22.50,65.00,
+19-Jun-17,6,Below,Ambient,8.07,1280,22.50,46.50,
+19-Jun-17,7,Below,Exclusion,8.05,1282,22.50,52.50,
+19-Jun-17,8,Below,Ambient,8.02,1284,22.50,,
+19-Jun-17,9,Below,Cage Control,7.95,1285,22.50,,
+19-Jun-17,10,Below,Ambient,8.04,1280,22.50,,
+19-Jun-17,1,Above,Exclusion,8.01,1282,22.50,36.00,
+19-Jun-17,2,Above,Cage Control,8.02,1278,22.50,40.90,
+19-Jun-17,3,Above,Exclusion,8.05,1285,22.50,37.00,
+19-Jun-17,4,Above,Ambient,8.07,1286,22.50,35.00,
+19-Jun-17,5,Above,Exclusion,7.98,1286,22.50,44.00,
+19-Jun-17,6,Above,Exclusion,8.04,1285,22.50,,
+19-Jun-17,7,Above,Ambient,7.98,1292,22.50,,
+19-Jun-17,8,Above,Cage Control,8.12,1289,22.50,,
+19-Jun-17,9,Above,Exclusion,8.12,1290,22.50,,
+28-Jun-17,1,Below,Ambient,8.04,1290,22.50,,
+28-Jun-17,2,Below,Exclusion,8.16,,27.50,36.00,8.70
+28-Jun-17,3,Below,Exclusion,,,,39.00,7.00
+28-Jun-17,4,Below,Ambient,,1056,,43.00,6.60
+28-Jun-17,5,Below,Exclusion,8.16,1072,,,6.60
+28-Jun-17,6,Below,Ambient,,1062,,60.00,6.50
+28-Jun-17,7,Below,Exclusion,,,,52.00,
+28-Jun-17,8,Below,Ambient,8.18,1056,26.70,63.50,6.20
+28-Jun-17,9,Below,Cage Control,,,,63.00,
+28-Jun-17,10,Below,Ambient,8.24,1088,27.50,28.00,7.30
+28-Jun-17,1,Above,Exclusion,,1088,,31.00,7.00
+28-Jun-17,2,Above,Cage Control,,1088,,35.00,7.00
+28-Jun-17,3,Above,Exclusion,,1090,,35.00,7.50
+28-Jun-17,4,Above,Ambient,8.21,1090,27.40,32.00,7.20
+28-Jun-17,5,Above,Exclusion,,1093,,36.00,6.80
+28-Jun-17,6,Above,Exclusion,,1090,,37.00,7.30
+28-Jun-17,7,Above,Ambient,,1085,,39.00,7.00
+28-Jun-17,8,Above,Cage Control,,1092,,45.00,6.80
+28-Jun-17,9,Above,Exclusion,8.20,1080,27.40,48.00,7.40
+,,,,,,,,

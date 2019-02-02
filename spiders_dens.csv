@@ -1,0 +1,41 @@
+date,stat,stat2,loc,trt,treatment,spid
+21-Jun-17,4,4,Above,Ambient,fish,0
+29-Jun-17,4,4,Above,Ambient,fish,0
+21-Jun-17,7,7,Above,Ambient,fish,0
+29-Jun-17,7,7,Above,Ambient,fish,0
+21-Jun-17,10,10,Above,Ambient,fish,0
+29-Jun-17,10,10,Above,Ambient,fish,0
+21-Jun-17,1,11,Below,Ambient,fish,0
+29-Jun-17,1,11,Below,Ambient,fish,0
+21-Jun-17,4,14,Below,Ambient,fish,1
+29-Jun-17,4,14,Below,Ambient,fish,0
+21-Jun-17,6,16,Below,Ambient,fish,0
+29-Jun-17,6,16,Below,Ambient,fish,1
+21-Jun-17,8,18,Below,Ambient,fish,0
+29-Jun-17,8,18,Below,Ambient,fish,0
+21-Jun-17,10,20,Below,Ambient,fish,0
+29-Jun-17,10,20,Below,Ambient,fish,0
+21-Jun-17,2,2,Above,Cage Control,fish,0
+29-Jun-17,2,2,Above,Cage Control,fish,0
+21-Jun-17,8,8,Above,Cage Control,fish,0
+29-Jun-17,8,8,Above,Cage Control,fish,0
+21-Jun-17,9,19,Below,Cage Control,fish,3
+29-Jun-17,9,19,Below,Cage Control,fish,0
+21-Jun-17,1,1,Above,Exclusion,no fish,2
+29-Jun-17,1,1,Above,Exclusion,no fish,1
+21-Jun-17,3,3,Above,Exclusion,no fish,1
+29-Jun-17,3,3,Above,Exclusion,no fish,2
+21-Jun-17,5,5,Above,Exclusion,no fish,1
+29-Jun-17,5,5,Above,Exclusion,no fish,0
+21-Jun-17,6,6,Above,Exclusion,no fish,1
+29-Jun-17,6,6,Above,Exclusion,no fish,1
+21-Jun-17,9,9,Above,Exclusion,no fish,2
+29-Jun-17,9,9,Above,Exclusion,no fish,2
+21-Jun-17,2,12,Below,Exclusion,no fish,2
+29-Jun-17,2,12,Below,Exclusion,no fish,1
+21-Jun-17,3,13,Below,Exclusion,no fish,0
+29-Jun-17,3,13,Below,Exclusion,no fish,0
+21-Jun-17,5,15,Below,Exclusion,no fish,0
+29-Jun-17,5,15,Below,Exclusion,no fish,1
+21-Jun-17,7,17,Below,Exclusion,no fish,4
+29-Jun-17,7,17,Below,Exclusion,no fish,0
