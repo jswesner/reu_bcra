@@ -1,0 +1,41 @@
+date,stat,stat2,loc,trt,treatment,spid
+6/21/2017,4,4,Above,Ambient,fish,0
+6/29/2017,4,4,Above,Ambient,fish,0
+6/21/2017,7,7,Above,Ambient,fish,0
+6/29/2017,7,7,Above,Ambient,fish,0
+6/21/2017,10,10,Above,Ambient,fish,0
+6/29/2017,10,10,Above,Ambient,fish,0
+6/21/2017,1,11,Below,Ambient,fish,0
+6/29/2017,1,11,Below,Ambient,fish,0
+6/21/2017,4,14,Below,Ambient,fish,1
+6/29/2017,4,14,Below,Ambient,fish,0
+6/21/2017,6,16,Below,Ambient,fish,0
+6/29/2017,6,16,Below,Ambient,fish,1
+6/21/2017,8,18,Below,Ambient,fish,0
+6/29/2017,8,18,Below,Ambient,fish,0
+6/21/2017,10,20,Below,Ambient,fish,0
+6/29/2017,10,20,Below,Ambient,fish,0
+6/21/2017,2,2,Above,Cage Control,fish,0
+6/29/2017,2,2,Above,Cage Control,fish,0
+6/21/2017,8,8,Above,Cage Control,fish,0
+6/29/2017,8,8,Above,Cage Control,fish,0
+6/21/2017,9,19,Below,Cage Control,fish,3
+6/29/2017,9,19,Below,Cage Control,fish,0
+6/21/2017,1,1,Above,Exclusion,no fish,2
+6/29/2017,1,1,Above,Exclusion,no fish,1
+6/21/2017,3,3,Above,Exclusion,no fish,1
+6/29/2017,3,3,Above,Exclusion,no fish,2
+6/21/2017,5,5,Above,Exclusion,no fish,1
+6/29/2017,5,5,Above,Exclusion,no fish,0
+6/21/2017,6,6,Above,Exclusion,no fish,1
+6/29/2017,6,6,Above,Exclusion,no fish,1
+6/21/2017,9,9,Above,Exclusion,no fish,2
+6/29/2017,9,9,Above,Exclusion,no fish,2
+6/21/2017,2,12,Below,Exclusion,no fish,2
+6/29/2017,2,12,Below,Exclusion,no fish,1
+6/21/2017,3,13,Below,Exclusion,no fish,0
+6/29/2017,3,13,Below,Exclusion,no fish,0
+6/21/2017,5,15,Below,Exclusion,no fish,0
+6/29/2017,5,15,Below,Exclusion,no fish,1
+6/21/2017,7,17,Below,Exclusion,no fish,4
+6/29/2017,7,17,Below,Exclusion,no fish,0
