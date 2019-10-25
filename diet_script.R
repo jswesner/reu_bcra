@@ -64,12 +64,6 @@ post <- as_tibble(fit_dir) %>%
   mutate(iter = 1:nrow(fit_dir)) %>% 
   gather(key, mg_dm_diet,-iter) %>% 
   separate(key, c("species","date2","prey_taxon"), sep = "_", extra = "merge")
-  
-
-#reduce size of posteriors, keeping only 1000 iterations
-post1000 <- post %>% 
-  group_by(species, date2, prey_taxon) %>% 
-  sample_n(1000)
 
 
 
@@ -135,7 +129,7 @@ plot_mg_diet <-
                                              jitter.width = 0,
                                              jitter.height = 0))
 
-ggsave(plot_mg_diet, file = "plot_mg_diet.tiff", dpi = 600, width = 7, height = 7, units = "in")
+#ggsave(plot_mg_diet, file = "plot_mg_diet.tiff", dpi = 600, width = 7, height = 7, units = "in")
 
 
 
@@ -156,12 +150,6 @@ prop_chiro_with_fish <- as_tibble(post) %>%
               values_from = mg_dm_diet) %>% 
   mutate(prop_chiro = chiro/(chiro + non_chiro),
          date_order = as.numeric(as.factor(date2)))
-
-prop_chiro_with_fish %>% 
-  ggplot(aes(x = prop_chiro, y = fct_rev(as_factor(date2)), fill = species))+
-  geom_density_ridges()
-
-
 
 
 #prop chiro prey of non-fish prey
@@ -200,8 +188,8 @@ prop_chiro_pupae <- as_tibble(post) %>%
                                               "spotfin" = "Spotfin Shiner")),
          species = fct_relevel(species, c("Bluegill", "Spotfin Shiner")))
 
-#combine and plot in two panels
 
+#combine and plot in two panels
 both <- prop_chiro_pupae %>% left_join(prop_chiro_without_fish) %>% 
   select(iter, species, date2, prop_pa, prop_chiro) %>% 
   gather(facet, proportion, c("prop_pa", "prop_chiro")) %>% 
@@ -221,12 +209,12 @@ plot_prop_chiro_pup <- both %>%
   facet_wrap(~facet)
 
 
-ggsave(plot_prop_chiro_pup, file = "plot_prop_chiro_pup.tiff", dpi = 600, width = 8, height = 5, units = "in")
+#ggsave(plot_prop_chiro_pup, file = "plot_prop_chiro_pup.tiff", dpi = 600, width = 8, height = 5, units = "in")
 
 
 
 # Summarize posteriors ----------------------------------------------------
-#mean and sd of dry mass in fish diets
+#summary stats of dry mass in fish diets
 post_agg %>% 
   group_by(species, date2, prey_taxon) %>% 
   summarize(mean = mean(mg_dm_diet),
@@ -237,4 +225,39 @@ post_agg %>%
   arrange(-mean) 
 
   
+#summary stats of prop chiro
+#WITH FISH_yoy
+prop_chiro_with_fish %>% 
+  group_by(species, date2) %>% 
+  summarize(mean = mean(prop_chiro),
+            median = median(prop_chiro),
+            sd = sd(prop_chiro),
+            low95 = quantile(prop_chiro, probs = 0.025),
+            high95 = quantile(prop_chiro, probs = 0.975)) %>% 
+  arrange(-mean) 
+
+#WITHOUT FISH_yoy
+prop_chiro_without_fish %>% 
+  group_by(species, date2) %>% 
+  summarize(mean = mean(prop_chiro),
+            median = median(prop_chiro),
+            sd = sd(prop_chiro),
+            low95 = quantile(prop_chiro, probs = 0.025),
+            high95 = quantile(prop_chiro, probs = 0.975)) %>% 
+  arrange(-mean) 
+
+
+
+
+
+#summary stats of prop chiro
+#WITH FISH_yoy
+prop_chiro_pupae %>% 
+  group_by(species, date2) %>% 
+  summarize(mean = mean(prop_pa),
+            median = median(prop_pa),
+            sd = sd(prop_pa),
+            low95 = quantile(prop_pa, probs = 0.025),
+            high95 = quantile(prop_pa, probs = 0.975)) %>% 
+  arrange(-mean)
 
