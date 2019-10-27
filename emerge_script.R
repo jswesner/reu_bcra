@@ -1,0 +1,194 @@
+
+#Packages
+library(tidyverse)
+library(lubridate)
+library(brms)
+library(ggridges)
+library(RCurl)
+library(janitor)
+
+#Summary of counts within traps
+
+# Load data ---------------------------------------------------------------
+
+#full emergence abundance
+emerge_reu <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/emerge_reu.csv"))
+#chiro_individual_lengths
+chiro_ind <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/ind_ins.csv"))
+#Bayesian model of emergence (or re-run it below)
+emerge_dm_model <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/emerge_dm_model.RDS?raw=true"))
+
+
+# Length-mass regression - chiros -----------------------------------------
+
+
+#plot to check for differences in chiro length over time and treatments
+chiro_ind %>%
+  mutate(date = mdy(date)) %>%
+  ggplot(aes(x=date,y=mm,color=trt,group=interaction(trt,date)))+
+  geom_violin(position=position_dodge(width=8))+
+  geom_point(position=position_dodge(width=8),size=3,alpha=0.2)+
+  #scale_y_log10()+
+  theme_classic()+
+  scale_color_grey()+
+  ggtitle("Violin plot of chironomid lengths (mm)")+
+  NULL
+
+
+#add parameters (a,b) to convert length to mass
+chiro_mg <- chiro_ind %>%
+  mutate(a = 0.1, #parameter
+         b = 1.57, #parameter
+         param_source = "Sabo et al. 2002 (Table 2)", #source
+         param_taxon = "Nematocera") %>% #source taxon
+  mutate(mg_dm = a*mm^b) #generate biomass
+
+
+#Fit the Model
+chiro_mg_dm <- brm(mg_dm ~ 1, data=chiro_mg, family=Gamma(link="log"),
+                 prior=prior(normal(0,2),class="Intercept"))
+
+#check model and save
+chiro_mg_dm
+pp_check(chiro_mg_dm, type = "boxplot")
+saveRDS(chiro_mg_dm, file = "chiro_mg_dm.RDS")
+
+#get mean and sd of chiro mass to sample from
+post_chiro_mg <- posterior_samples(chiro_mg_dm)
+
+chiro_adult_ind_shape <- mean(post_chiro_mg$shape)
+chiro_adult_ind_scale <- mean(exp(post_chiro_mg$b_Intercept)/post_chiro_mg$shape)
+
+
+#Convert emergence abundance to dry mass (mg)
+
+#Chironomid dry mass based on model above using direct measures of mm
+#Dry mass of other taxa were estimated from previous collections at the same site or nearby sites (Wesner et al. in review)
+
+set.seed(2020)
+emerge_reu_mg<-emerge_reu %>%
+  replace(is.na(.), 0) %>%
+  mutate(chiro_mg_dm = chir*.99,
+         doli_mg_dm = doli*.65,
+         tric_mg_dm = tric*.8,
+         odo_mg_dm = odo*6.2,
+         ephem_mg_dm = ephe*1.1,
+         tot_mg_dm = chiro_mg_dm+doli_mg_dm+tric_mg_dm+odo_mg_dm+ephem_mg_dm,
+         tot_mg_dm_m2_d = tot_mg_dm/area/days)
+emerge_reu_mg$id <- paste(emerge_reu_mg$stat,emerge_reu_mg$loc)
+
+
+
+# Bayesian model mg emergence ---------------------------------------------
+
+#prior predictive
+#emerge_prior_dm_model <- brm(tot_mg_dm_m2_d ~ date*trt2 + (1|id),data=emerge_reu_mg,family=Gamma(link="log"),
+ #                            prior=c(prior(normal(1,1),class="Intercept"),
+  #                                   prior=prior(normal(0,2),class="b")),
+   #                          sample_prior = "only")
+
+
+
+
+#full model
+#emerge_dm_model <- brm(tot_mg_dm_m2_d ~ date*trt2 + (1|id),data=emerge_reu_mg,family=Gamma(link="log"),
+#  prior=c(prior(normal(1,1),class="Intercept"),
+#  prior=prior(normal(0,2),class="b")),
+#  cores=4)
+
+#check model
+emerge_dm_model
+pp_check(emerge_dm_model, type = "boxplot")
+
+#save model
+saveRDS(emerge_dm_model, file = "emerge_dm_model.RDS")
+
+# Extract conditional posteriors ------------------------------------------
+
+#make data to condition on
+date <- unique(emerge_reu_mg$date)
+trt2 <- unique(emerge_reu_mg$trt2)
+newdata <- expand.grid(date, trt2) %>% 
+  rename(date = Var1,
+         trt2 = Var2)
+
+#extract posterior on each date an treatment
+emerge_fit <- fitted(emerge_dm_model, newdata = newdata, summary=F, 
+                     re_formula = NA)
+
+names <- newdata %>% unite(colnames,c(date, trt2)) #names for the columns of the fitted estimates below
+colnames(emerge_fit) <- names$colnames
+
+post_emerge_mg <- as_tibble(emerge_fit) %>% 
+  mutate(iter = 1:nrow(emerge_fit)) %>% 
+  gather(key, mg_dm, -iter) %>% 
+  separate(key, c("date","trt2"), sep = "_")
+
+
+# Plot posteriors ---------------------------------------------------------
+raw_data_plot <- emerge_reu_mg %>% 
+  mutate(mg_dm = tot_mg_dm_m2_d,
+         date = mdy(date),
+         trt2 = str_replace_all(trt2,c("ctrl" = "no fish",
+                                      "exc" = "fish")))
+
+plot_emerge <- post_emerge_mg %>% 
+  mutate(date = mdy(date),
+         trt2 = str_replace_all(trt2,c("ctrl" = "no fish",
+                                  "exc" = "fish"))) %>%
+  ggplot(aes(x = date, y = mg_dm, fill = trt2)) +
+  geom_boxplot(aes(group = interaction(trt2, date)), outlier.shape = NA,
+               position = position_dodge(width = 2),
+               width = 1.5)+
+  theme_classic()+
+  scale_fill_grey(start = 0.9, end = 0.4)+
+  theme(legend.title = element_blank(),
+        axis.title.x =element_blank())+
+  geom_point(data = raw_data_plot, aes(fill = trt2), 
+             position = position_dodge(width = 2),
+             shape = 21, size = 1.3) +
+  coord_cartesian(ylim = c(0,2000)) +
+  ylab(bquote('mg dry mass/'~m^2)) +
+  geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
+  #annotate("text",x=as.Date("2017-06-02")+7.5,y=320,label="start of experiment")+
+  #geom_segment(aes(x = as.Date("2017-06-05"), y = 320, xend=as.Date("2017-06-02"), yend = 320))+
+  #scale_y_log10()+
+  ggtitle("b) Emerging insects")
+
+
+ggsave(plot_emerge, file = "plot_emerge.tiff", dpi = 600, width = 7, height = 3.5, units = "in")
+
+
+
+# Summarize posteriors ----------------------------------------------------
+
+#summary of each date and treatment
+post_emerge_mg %>% 
+  mutate(date = mdy(date),
+         trt2 = str_replace_all(trt2,c("ctrl" = "no fish",
+                                       "exc" = "fish"))) %>% 
+  group_by(date, trt2) %>% 
+  summarize(mean = mean(mg_dm),
+            median = median(mg_dm),
+            sd = sd(mg_dm),
+            low95 = quantile(mg_dm, probs = 0.025),
+            high95 = quantile(mg_dm, probs = 0.975))
+
+
+#summary of cumulative emergence after experiment began
+post_emerge_mg %>% 
+  mutate(date = mdy(date),
+         trt2 = str_replace_all(trt2,c("ctrl" = "no fish",
+                                       "exc" = "fish"))) %>% 
+  pivot_wider(names_from = date, 
+              values_from = mg_dm) %>% 
+  clean_names() %>% 
+  mutate(tot_emerge = x2017_06_06 + x2017_06_12 + x2017_06_16 + x2017_06_23) %>% 
+  select(iter, trt2, tot_emerge) %>% 
+  group_by(trt2) %>% 
+  summarize(mean = mean(tot_emerge),
+            median = median(tot_emerge),
+            sd = sd(tot_emerge),
+            low95 = quantile(tot_emerge, probs = 0.025),
+            high95 = quantile(tot_emerge, probs = 0.975))
+  
