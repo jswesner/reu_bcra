@@ -98,7 +98,7 @@ plot_spider <- marg_spiders_fit_plot %>%
                                  format="%Y-%m-%d")) +
   geom_point(data = raw_spider_plot, aes(fill = trt), 
              position = position_dodge(width = 2),
-             shape = 21, size = 1.3) +
+             shape = 16, size = 1.3) +
   ylab(expression(paste("Spider abundance (#/cage)")))+
   geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
   #annotate("text",x=as.Date("2017-06-02")+7.5,y=320,label="start of experiment")+
@@ -107,6 +107,7 @@ plot_spider <- marg_spiders_fit_plot %>%
   ggtitle("c) Spider abundance")
 
 ggsave(plot_spider, file = "plot_spider.tiff", dpi = 600, width = 7, height = 3.5, units = "in")
+saveRDS(plot_spider, file = "plot_spider.rds")
 
   
 
