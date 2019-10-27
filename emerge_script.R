@@ -1,4 +1,3 @@
-
 #Packages
 library(tidyverse)
 library(lubridate)
@@ -15,6 +14,8 @@ library(janitor)
 emerge_reu <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/emerge_reu.csv"))
 #chiro_individual_lengths
 chiro_ind <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/ind_ins.csv"))
+#Bayesian model of chiro individual mass
+chiro_mg_dm <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/emerge_chiro_mg_dm.RDS?raw=true"))
 #Bayesian model of emergence (or re-run it below)
 emerge_dm_model <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/emerge_dm_model.RDS?raw=true"))
 
@@ -45,13 +46,15 @@ chiro_mg <- chiro_ind %>%
 
 
 #Fit the Model
-chiro_mg_dm <- brm(mg_dm ~ 1, data=chiro_mg, family=Gamma(link="log"),
-                 prior=prior(normal(0,2),class="Intercept"))
+#chiro_mg_dm <- brm(mg_dm ~ 1, data=chiro_mg, family=Gamma(link="log"),
+#                 prior=prior(normal(0,2),class="Intercept"))
+
+#saveRDS(chiro_mg_dm, file = "emerge_chiro_mg_dm.RDS")
 
 #check model and save
 chiro_mg_dm
 pp_check(chiro_mg_dm, type = "boxplot")
-saveRDS(chiro_mg_dm, file = "chiro_mg_dm.RDS")
+#saveRDS(chiro_mg_dm, file = "chiro_mg_dm.RDS")
 
 #get mean and sd of chiro mass to sample from
 post_chiro_mg <- posterior_samples(chiro_mg_dm)
@@ -101,7 +104,7 @@ emerge_dm_model
 pp_check(emerge_dm_model, type = "boxplot")
 
 #save model
-saveRDS(emerge_dm_model, file = "emerge_dm_model.RDS")
+#saveRDS(emerge_dm_model, file = "emerge_dm_model.RDS")
 
 # Extract conditional posteriors ------------------------------------------
 
@@ -129,13 +132,13 @@ post_emerge_mg <- as_tibble(emerge_fit) %>%
 raw_data_plot <- emerge_reu_mg %>% 
   mutate(mg_dm = tot_mg_dm_m2_d,
          date = mdy(date),
-         trt2 = str_replace_all(trt2,c("ctrl" = "no fish",
-                                      "exc" = "fish")))
+         trt2 = str_replace_all(trt2,c("ctrl" = "fish",
+                                      "exc" = "no fish")))
 
 plot_emerge <- post_emerge_mg %>% 
   mutate(date = mdy(date),
-         trt2 = str_replace_all(trt2,c("ctrl" = "no fish",
-                                  "exc" = "fish"))) %>%
+         trt2 = str_replace_all(trt2,c("ctrl" = "fish",
+                                  "exc" = "no fish"))) %>%
   ggplot(aes(x = date, y = mg_dm, fill = trt2)) +
   geom_boxplot(aes(group = interaction(trt2, date)), outlier.shape = NA,
                position = position_dodge(width = 2),
@@ -143,12 +146,15 @@ plot_emerge <- post_emerge_mg %>%
   theme_classic()+
   scale_fill_grey(start = 0.9, end = 0.4)+
   theme(legend.title = element_blank(),
-        axis.title.x =element_blank())+
+        axis.title.x =element_blank(),
+        text = element_text(size = 20))+
+  coord_cartesian(ylim = c(0,2000),
+                  xlim = as.Date(c('2017-05-28', '2017-06-29'), 
+                                 format="%Y-%m-%d")) +
   geom_point(data = raw_data_plot, aes(fill = trt2), 
              position = position_dodge(width = 2),
-             shape = 21, size = 1.3) +
-  coord_cartesian(ylim = c(0,2000)) +
-  ylab(bquote('mg dry mass/'~m^2)) +
+             shape = 14, size = 1.3) +
+  ylab(bquote('mg dry mass/'~m^2/d)) +
   geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
   #annotate("text",x=as.Date("2017-06-02")+7.5,y=320,label="start of experiment")+
   #geom_segment(aes(x = as.Date("2017-06-05"), y = 320, xend=as.Date("2017-06-02"), yend = 320))+
@@ -157,7 +163,7 @@ plot_emerge <- post_emerge_mg %>%
 
 
 ggsave(plot_emerge, file = "plot_emerge.tiff", dpi = 600, width = 7, height = 3.5, units = "in")
-
+saveRDS(plot_emerge, file = "plot_emerge.rds")
 
 
 # Summarize posteriors ----------------------------------------------------
