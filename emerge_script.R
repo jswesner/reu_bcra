@@ -86,18 +86,19 @@ emerge_reu_mg$id <- paste(emerge_reu_mg$stat,emerge_reu_mg$loc)
 
 #prior predictive
 #emerge_prior_dm_model <- brm(tot_mg_dm_m2_d ~ date*trt2 + (1|id),data=emerge_reu_mg,family=Gamma(link="log"),
- #                            prior=c(prior(normal(1,1),class="Intercept"),
-  #                                   prior=prior(normal(0,2),class="b")),
+ #                            prior=c(prior(normal(1,2),class="Intercept"),
+  #                                   prior=prior(normal(0,4),class="b")),
    #                          sample_prior = "only")
 
 
 
 
 #full model
-#emerge_dm_model <- brm(tot_mg_dm_m2_d ~ date*trt2 + (1|id),data=emerge_reu_mg,family=Gamma(link="log"),
-#  prior=c(prior(normal(1,1),class="Intercept"),
-#  prior=prior(normal(0,2),class="b")),
-#  cores=4)
+#emerge_dm_model <- brm(tot_mg_dm_m2_d ~ date*trt2 + (1|id) + (1|loc),data=emerge_reu_mg,family=Gamma(link="log"),
+#prior=c(prior(normal(1,2),class="Intercept"),
+#prior(normal(0,4),class="b"),
+#prior(cauchy(0,1),class = "sd")),
+#cores=4)
 
 #check model
 emerge_dm_model
@@ -151,9 +152,9 @@ plot_emerge <- post_emerge_mg %>%
   coord_cartesian(ylim = c(0,2000),
                   xlim = as.Date(c('2017-05-28', '2017-06-29'), 
                                  format="%Y-%m-%d")) +
-  geom_point(data = raw_data_plot, aes(fill = trt2), 
+  geom_point(data = raw_data_plot, aes(y = tot_mg_dm_m2_d,fill = trt2), 
              position = position_dodge(width = 2),
-             shape = 14, size = 1.3) +
+             shape = 16, size = 1.3) +
   ylab(bquote('mg dry mass/'~m^2/d)) +
   geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
   #annotate("text",x=as.Date("2017-06-02")+7.5,y=320,label="start of experiment")+
@@ -182,7 +183,7 @@ post_emerge_mg %>%
 
 
 #summary of cumulative emergence after experiment began
-post_emerge_mg %>% 
+sum_emerge <- post_emerge_mg %>% 
   mutate(date = mdy(date),
          trt2 = str_replace_all(trt2,c("ctrl" = "no fish",
                                        "exc" = "fish"))) %>% 
@@ -197,4 +198,5 @@ post_emerge_mg %>%
             sd = sd(tot_emerge),
             low95 = quantile(tot_emerge, probs = 0.025),
             high95 = quantile(tot_emerge, probs = 0.975))
-  
+
+write.csv(sum_emerge, file = "sum_emerge.csv")  

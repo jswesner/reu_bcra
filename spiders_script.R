@@ -48,10 +48,11 @@ spider_abund2 <- as_tibble(spider_abund) %>%
 
 #Bayesian model
 spider_abund2$spid01 <- 0.01+spider_abund2$spid
-#m2<-brm(spid~trt*date,data=spider_abund2,family=poisson(link="log"),
-#        prior=c(prior(normal(0,100),class="b"),
-#                prior(normal(0,20),class="Intercept")),
-#        iter = 3000, chains = 4, cores=4)
+#m2<-brm(spid~trt*date + (1|loc),data=spider_abund2,family=poisson(link="log"),
+ #       prior=c(prior(normal(0,1),class="b"),
+  #              prior(normal(0,1),class="Intercept"),
+   #             prior(cauchy(0,1), class = "sd")),
+    #    iter = 2000, chains = 4, cores=4)
 
 #check model
 m2
@@ -114,7 +115,7 @@ saveRDS(plot_spider, file = "plot_spider.rds")
 # Summarize posterior -----------------------------------------------------
 
 #mean spiders
-marg_spiders_fit_plot %>% 
+tot_spiders <- marg_spiders_fit_plot %>% 
   group_by(date,trt) %>% 
   summarize(mean = mean(spider_abundance),
             median = median(spider_abundance),
@@ -122,6 +123,7 @@ marg_spiders_fit_plot %>%
             low95 = quantile(spider_abundance,probs=0.025),
             high95 = quantile(spider_abundance,probs=0.975)) %>% 
   mutate_if(is.numeric,round,1) 
+write.csv(tot_spiders, file = "tot_spiders.csv")
 
 #differences in treatments
 marg_spiders_fit_plot %>% 

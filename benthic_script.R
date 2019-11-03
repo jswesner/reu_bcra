@@ -3,14 +3,12 @@ library(lubridate)
 library(brms)
 library(ggridges)
 library(RCurl)
-library(ggrepel)
 library(janitor)
-library(ggthemes)
 
 
 
 # Load data ---------------------------------------------------------------
-
+#benthic abundance
 ben <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/benthic62617.csv")) %>% 
   clean_names() %>% 
   mutate(chironomidae = chiro_larvae + pupae) %>% 
@@ -22,12 +20,18 @@ ben_dm_ind <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner
   mutate(taxon = str_replace(taxon, "Baetidae", "ephemeroptera"),
          taxon = str_replace(taxon, "Caenidae", "ephemeroptera"))
 
+#Bayesian brms model of length-weight regression
+brm_ind_mg <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/benthic_ind_mg.RDS?raw=true"))
+
+#Bayesian brms model of benthic dry mass
+brm_ben_m2 <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/brm_ben_m2.RDS?raw=true"))
+
 
 #Bayesian model of benthic individual dry mass
-#brm_ind_mg <- brm(mg_dm_per_ind ~ 0 + taxon + (1|experiment), data = ben_dm_ind,
-#                  family = Gamma(link = "log"),
-#                  prior = c(prior(normal(0,1), class = "b")),
-#                  cores = 4)
+brm_ind_mg <- brm(mg_dm_per_ind ~ 0 + taxon + (1|experiment), data = ben_dm_ind,
+                  family = Gamma(link = "log"),
+                  prior = c(prior(normal(0,1), class = "b")),
+                  cores = 4)
 
 #check model
 brm_ind_mg
@@ -71,14 +75,16 @@ ben_dm_tot <- merge(ben_clean,ind_mg_mean) %>%
 # Bayesian model ----------------------------------------------------------
 
 
-brm_ben_m2 <- brm(benthic_mg01~date*trt*taxon, data=ben_dm_tot,family=Gamma(link="log"),
-                  prior=c(prior(normal(0,2),class="Intercept"), 
-                          prior(normal(0,1),class="b")))
+#brm_ben_m2 <- brm(benthic_mg01~date*trt*taxon + (1|location), data=ben_dm_tot,family=Gamma(link="log"),
+#prior=c(prior(normal(0,2),class="Intercept"), 
+#prior(normal(0,1),class="b"),
+#prior(cauchy(0,1),class = "sd")))
 
 #check model
 brm_ben_m2
 pp_check(brm_ben_m2, type = "boxplot")
 
+#saveRDS(brm_ben_m2, file = "brm_ben_m2.RDS")
 
 # Extract conditional posteriors ------------------------------------------
 
@@ -90,11 +96,11 @@ newdata = expand.grid(date,trt,taxon) %>%
          trt = Var2,
          taxon = Var3)
 
-marg_post <- fitted(brm_ben_m2, summary = F, newdata = newdata)
+marg_post <- fitted(brm_ben_m2, summary = F, newdata = newdata, re_formula = NA)
 names = newdata %>% unite("colnames", date:taxon)
 colnames(marg_post) <- names$colnames
 
-marg_post2 <- marg_post %>% as.tibble(marg_post)%>%
+marg_post2 <- marg_post %>% as_tibble(marg_post)%>%
   mutate(iter = 1:nrow(marg_post)) %>% 
   gather(key,mg_dm_m2, -iter)%>%
   separate(key, c("date","trt","taxon"), sep = "_") %>% 
@@ -122,7 +128,7 @@ plot_benthic <- total_mg %>%
                width = 1.5)+
   theme_classic()+
   scale_fill_grey(start = 0.9, end = 0.4)+
-  coord_cartesian(xlim = as.Date(c('2017-05-28', '2017-06-28'), 
+  coord_cartesian(xlim = as.Date(c('2017-05-28', '2017-06-29'), 
                                  format="%Y-%m-%d")) +
   scale_y_continuous(limits = c(0, 4800),
                      breaks = c(0,1000, 2000, 3000, 4000, 5000)) +
@@ -131,16 +137,17 @@ plot_benthic <- total_mg %>%
         text = element_text(size = 20))+
   geom_point(data = raw_ben_plot, aes(y = benthic_mg_dm_m2, x = date, fill = trt), 
              position = position_dodge(width = 2),
-             shape = 21, size = 1.3) +
+             shape = 16, size = 1.3) +
   ylab(bquote('mg dry mass/'~m^2)) +
   geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
-  annotate("text",x=as.Date("2017-06-02")+7.5,y=320,label="start of experiment")+
-  geom_segment(aes(x = as.Date("2017-06-05"), y = 320, xend=as.Date("2017-06-02"), yend = 320))+
+  annotate("text",x=as.Date("2017-06-02")+7.5,y=3200,label="start of experiment")+
+  geom_segment(aes(x = as.Date("2017-06-05"), y = 3200, xend=as.Date("2017-06-02"), yend = 3200))+
   #scale_y_log10()+
   ggtitle("a) Benthic insects")
 
 
 ggsave(plot_benthic, file = "plot_benthic.tiff", dpi = 600, width = 7, height = 3.5, units = "in")
+saveRDS(plot_benthic, file = "plot_benthic.rds")
 
 
 # Summarize posterior -----------------------------------------------------

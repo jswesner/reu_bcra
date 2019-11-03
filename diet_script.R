@@ -7,7 +7,7 @@ library(RCurl)
 
 # Load data and brms model (or re-run the model below) ---------------------------------------------------------------
 
-diet_mgmd <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/diet_mgdm.csv"))
+diet_mgdm <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/diet_mgdm.csv"))
 diet_brms <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/diet_brms.rds?raw=true"))
 
 # Make response non-zero. Make dates look like dates. Fix prey names. Remove Quillback (has zero diet items) 
@@ -82,7 +82,6 @@ post_agg <- post %>%
 
 #combine posts with correction
 post1000_agg_0 <- post_agg %>% 
-  left_join(d_0) %>% 
   ungroup() %>% 
   mutate(species = fct_relevel(species, c("bluegill","spotfin")))
 
@@ -215,7 +214,7 @@ plot_prop_chiro_pup <- both %>%
 
 # Summarize posteriors ----------------------------------------------------
 #summary stats of dry mass in fish diets
-post_agg %>% 
+diet_post <- post_agg %>% 
   group_by(species, date2, prey_taxon) %>% 
   summarize(mean = mean(mg_dm_diet),
             median = median(mg_dm_diet),
@@ -224,7 +223,50 @@ post_agg %>%
             high95 = quantile(mg_dm_diet, probs = 0.975)) %>% 
   arrange(-mean) 
 
-  
+#summary stats by proportion of diet items in fish diets
+
+#no stages
+sum_diet <- post_agg %>% 
+  group_by(species, date2, iter) %>%
+  summarize(sum = sum(mg_dm_diet))
+
+diet_post_proportion_nostage <- post_agg %>% 
+  left_join(sum_diet) %>% 
+  group_by(species, date2, prey_taxon) %>% 
+  mutate(prop = mg_dm_diet/sum) %>% 
+  summarize(mean = mean(prop),
+            median = median(prop),
+            var = var(prop), 
+            precision = 1/var,
+            sd = sd(prop),
+            low95 = quantile(prop, probs = 0.025),
+            high95 = quantile(prop, probs = 0.975)) %>% 
+  arrange(-mean) %>% 
+  mutate(aggregation = "no_stage_structure")
+
+#with stages
+sum_diet_stage <- post %>% 
+  group_by(species, date2, iter) %>%
+  summarize(sum = sum(mg_dm_diet))
+
+diet_post_proportion_stage <- post %>% 
+  left_join(sum_diet_stage) %>% 
+  group_by(species, date2, prey_taxon) %>% 
+  mutate(prop = mg_dm_diet/sum) %>% 
+  summarize(mean = mean(prop),
+            median = median(prop),
+            var = var(prop), 
+            precision = 1/var,
+            sd = sd(prop),
+            low95 = quantile(prop, probs = 0.025),
+            high95 = quantile(prop, probs = 0.975)) %>% 
+  arrange(-mean) %>%
+  mutate(aggregation = "stage_structure")
+
+#combine
+diet_post_proportion <- rbind(diet_post_proportion_nostage, diet_post_proportion_stage)
+saveRDS(diet_post_proportion, file = "diet_post_proportion.rds")
+
 #summary stats of prop chiro
 #WITH FISH_yoy
 prop_chiro_with_fish %>% 
