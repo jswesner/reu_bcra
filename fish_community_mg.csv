@@ -1,0 +1,161 @@
+"","site","location","date","gear","haul","area_sampled_ft2","notes","species","abund","mean_g_wm_ind","source","method","g_wm"
+"1","bcra","below","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","shortnose_gar",0,0,NA,NA,0
+"2","bcra","below","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","shortnose_gar",0,0,NA,NA,0
+"3","bcra","above","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","shortnose_gar",0,0,NA,NA,0
+"4","bcra","above","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","shortnose_gar",0,0,NA,NA,0
+"5","bcra","below","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","shortnose_gar",0,0,NA,NA,0
+"6","bcra","below","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","shortnose_gar",0,0,NA,NA,0
+"7","bcra","above","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","shortnose_gar",0,0,NA,NA,0
+"8","bcra","above","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","shortnose_gar",0,0,NA,NA,0
+"9","bcra","below","2017-06-23","20ft_seine",1,400,"","shortnose_gar",0,439,"guess of authors (2017)","length_wt_regression",0
+"10","bcra","below","2017-06-23","20ft_seine",2,400,"","shortnose_gar",0,439,"guess of authors (2017)","length_wt_regression",0
+"11","bcra","above","2017-06-23","20ft_seine",1,400,"","shortnose_gar",0,439,"guess of authors (2017)","length_wt_regression",0
+"12","bcra","above","2017-06-23","20ft_seine",2,400,"","shortnose_gar",0,439,"guess of authors (2017)","length_wt_regression",0
+"13","bcra","below","2017-06-28","20ft_seine",1,400,"","shortnose_gar",0,439,"guess of authors (2017)","length_wt_regression",0
+"14","bcra","below","2017-06-28","20ft_seine",2,400,"","shortnose_gar",0,439,"guess of authors (2017)","length_wt_regression",0
+"15","bcra","above","2017-06-28","20ft_seine",1,400,"","shortnose_gar",2,439,"guess of authors (2017)","length_wt_regression",878
+"16","bcra","above","2017-06-28","20ft_seine",2,400,"","shortnose_gar",0,439,"guess of authors (2017)","length_wt_regression",0
+"17","bcra","below","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","emerald_shiner",0,0,NA,NA,0
+"18","bcra","below","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","emerald_shiner",0,0,NA,NA,0
+"19","bcra","above","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","emerald_shiner",0,0,NA,NA,0
+"20","bcra","above","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","emerald_shiner",0,0,NA,NA,0
+"21","bcra","below","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","emerald_shiner",0,0,NA,NA,0
+"22","bcra","below","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","emerald_shiner",0,0,NA,NA,0
+"23","bcra","above","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","emerald_shiner",0,0,NA,NA,0
+"24","bcra","above","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","emerald_shiner",0,0,NA,NA,0
+"25","bcra","below","2017-06-23","20ft_seine",1,400,"","emerald_shiner",0,1.3,"guess of authors (2017)","length_wt_regression",0
+"26","bcra","below","2017-06-23","20ft_seine",2,400,"","emerald_shiner",0,1.3,"guess of authors (2017)","length_wt_regression",0
+"27","bcra","above","2017-06-23","20ft_seine",1,400,"","emerald_shiner",0,1.3,"guess of authors (2017)","length_wt_regression",0
+"28","bcra","above","2017-06-23","20ft_seine",2,400,"","emerald_shiner",0,1.3,"guess of authors (2017)","length_wt_regression",0
+"29","bcra","below","2017-06-28","20ft_seine",1,400,"","emerald_shiner",0,1.3,"guess of authors (2017)","length_wt_regression",0
+"30","bcra","below","2017-06-28","20ft_seine",2,400,"","emerald_shiner",0,1.3,"guess of authors (2017)","length_wt_regression",0
+"31","bcra","above","2017-06-28","20ft_seine",1,400,"","emerald_shiner",0,1.3,"guess of authors (2017)","length_wt_regression",0
+"32","bcra","above","2017-06-28","20ft_seine",2,400,"","emerald_shiner",1,1.3,"guess of authors (2017)","length_wt_regression",1.3
+"33","bcra","below","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","river_shiner",0,0,NA,NA,0
+"34","bcra","below","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","river_shiner",0,0,NA,NA,0
+"35","bcra","above","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","river_shiner",0,0,NA,NA,0
+"36","bcra","above","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","river_shiner",0,0,NA,NA,0
+"37","bcra","below","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","river_shiner",0,0,NA,NA,0
+"38","bcra","below","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","river_shiner",0,0,NA,NA,0
+"39","bcra","above","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","river_shiner",0,0,NA,NA,0
+"40","bcra","above","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","river_shiner",0,0,NA,NA,0
+"41","bcra","below","2017-06-23","20ft_seine",1,400,"","river_shiner",3,0.877874065675197,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",2.63362219702559
+"42","bcra","below","2017-06-23","20ft_seine",2,400,"","river_shiner",1,0.877874065675197,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0.877874065675197
+"43","bcra","above","2017-06-23","20ft_seine",1,400,"","river_shiner",12,0.877874065675197,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",10.5344887881024
+"44","bcra","above","2017-06-23","20ft_seine",2,400,"","river_shiner",10,0.877874065675197,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",8.77874065675197
+"45","bcra","below","2017-06-28","20ft_seine",1,400,"","river_shiner",5,1.07322745189914,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",5.3661372594957
+"46","bcra","below","2017-06-28","20ft_seine",2,400,"","river_shiner",0,1.07322745189914,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"47","bcra","above","2017-06-28","20ft_seine",1,400,"","river_shiner",0,1.07322745189914,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"48","bcra","above","2017-06-28","20ft_seine",2,400,"","river_shiner",10,1.07322745189914,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",10.7322745189914
+"49","bcra","below","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","spotfin_shiner",12,0,NA,NA,0
+"50","bcra","below","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","spotfin_shiner",40,0,NA,NA,0
+"51","bcra","above","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","spotfin_shiner",3,0,NA,NA,0
+"52","bcra","above","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","spotfin_shiner",24,0,NA,NA,0
+"53","bcra","below","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","spotfin_shiner",15,0,NA,NA,0
+"54","bcra","below","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","spotfin_shiner",7,0,NA,NA,0
+"55","bcra","above","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","spotfin_shiner",18,0,NA,NA,0
+"56","bcra","above","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","spotfin_shiner",39,0,NA,NA,0
+"57","bcra","below","2017-06-23","20ft_seine",1,400,"","spotfin_shiner",2,0,NA,NA,0
+"58","bcra","below","2017-06-23","20ft_seine",2,400,"","spotfin_shiner",2,0,NA,NA,0
+"59","bcra","above","2017-06-23","20ft_seine",1,400,"","spotfin_shiner",4,0,NA,NA,0
+"60","bcra","above","2017-06-23","20ft_seine",2,400,"","spotfin_shiner",5,0,NA,NA,0
+"61","bcra","below","2017-06-28","20ft_seine",1,400,"","spotfin_shiner",4,0,NA,NA,0
+"62","bcra","below","2017-06-28","20ft_seine",2,400,"","spotfin_shiner",2,0,NA,NA,0
+"63","bcra","above","2017-06-28","20ft_seine",1,400,"","spotfin_shiner",2,0,NA,NA,0
+"64","bcra","above","2017-06-28","20ft_seine",2,400,"","spotfin_shiner",55,0,NA,NA,0
+"65","bcra","below","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","bluegill",2,0,NA,NA,0
+"66","bcra","below","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","bluegill",1,0,NA,NA,0
+"67","bcra","above","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","bluegill",1,0,NA,NA,0
+"68","bcra","above","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","bluegill",1,0,NA,NA,0
+"69","bcra","below","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","bluegill",1,0,NA,NA,0
+"70","bcra","below","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","bluegill",8,0,NA,NA,0
+"71","bcra","above","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","bluegill",2,0,NA,NA,0
+"72","bcra","above","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","bluegill",5,0,NA,NA,0
+"73","bcra","below","2017-06-23","20ft_seine",1,400,"","bluegill",6,1.92810675799397,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",11.5686405479638
+"74","bcra","below","2017-06-23","20ft_seine",2,400,"","bluegill",0,1.92810675799397,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"75","bcra","above","2017-06-23","20ft_seine",1,400,"","bluegill",0,1.92810675799397,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"76","bcra","above","2017-06-23","20ft_seine",2,400,"","bluegill",0,1.92810675799397,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"77","bcra","below","2017-06-28","20ft_seine",1,400,"","bluegill",0,1.91150762558732,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"78","bcra","below","2017-06-28","20ft_seine",2,400,"","bluegill",0,1.91150762558732,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"79","bcra","above","2017-06-28","20ft_seine",1,400,"","bluegill",0,1.91150762558732,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"80","bcra","above","2017-06-28","20ft_seine",2,400,"","bluegill",1,1.91150762558732,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",1.91150762558732
+"81","bcra","below","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","fathead_minnow",0,0,NA,NA,0
+"82","bcra","below","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","fathead_minnow",0,0,NA,NA,0
+"83","bcra","above","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","fathead_minnow",0,0,NA,NA,0
+"84","bcra","above","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","fathead_minnow",0,0,NA,NA,0
+"85","bcra","below","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","fathead_minnow",1,0,NA,NA,0
+"86","bcra","below","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","fathead_minnow",1,0,NA,NA,0
+"87","bcra","above","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","fathead_minnow",0,0,NA,NA,0
+"88","bcra","above","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","fathead_minnow",1,0,NA,NA,0
+"89","bcra","below","2017-06-23","20ft_seine",1,400,"","fathead_minnow",0,2.8,"guess of authors (2017)","length_wt_regression",0
+"90","bcra","below","2017-06-23","20ft_seine",2,400,"","fathead_minnow",0,2.8,"guess of authors (2017)","length_wt_regression",0
+"91","bcra","above","2017-06-23","20ft_seine",1,400,"","fathead_minnow",6,2.8,"guess of authors (2017)","length_wt_regression",16.8
+"92","bcra","above","2017-06-23","20ft_seine",2,400,"","fathead_minnow",1,2.8,"guess of authors (2017)","length_wt_regression",2.8
+"93","bcra","below","2017-06-28","20ft_seine",1,400,"","fathead_minnow",0,2.8,"guess of authors (2017)","length_wt_regression",0
+"94","bcra","below","2017-06-28","20ft_seine",2,400,"","fathead_minnow",0,2.8,"guess of authors (2017)","length_wt_regression",0
+"95","bcra","above","2017-06-28","20ft_seine",1,400,"","fathead_minnow",0,2.8,"guess of authors (2017)","length_wt_regression",0
+"96","bcra","above","2017-06-28","20ft_seine",2,400,"","fathead_minnow",2,2.8,"guess of authors (2017)","length_wt_regression",5.6
+"97","bcra","below","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","largemouth",0,0,NA,NA,0
+"98","bcra","below","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","largemouth",0,0,NA,NA,0
+"99","bcra","above","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","largemouth",0,0,NA,NA,0
+"100","bcra","above","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","largemouth",0,0,NA,NA,0
+"101","bcra","below","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","largemouth",2,0,NA,NA,0
+"102","bcra","below","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","largemouth",0,0,NA,NA,0
+"103","bcra","above","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","largemouth",0,0,NA,NA,0
+"104","bcra","above","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","largemouth",8,0,NA,NA,0
+"105","bcra","below","2017-06-23","20ft_seine",1,400,"","largemouth",0,1.1281813019307,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"106","bcra","below","2017-06-23","20ft_seine",2,400,"","largemouth",0,1.1281813019307,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"107","bcra","above","2017-06-23","20ft_seine",1,400,"","largemouth",0,1.1281813019307,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"108","bcra","above","2017-06-23","20ft_seine",2,400,"","largemouth",0,1.1281813019307,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"109","bcra","below","2017-06-28","20ft_seine",1,400,"","largemouth",0,0.976313660851131,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"110","bcra","below","2017-06-28","20ft_seine",2,400,"","largemouth",0,0.976313660851131,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0
+"111","bcra","above","2017-06-28","20ft_seine",1,400,"","largemouth",1,0.976313660851131,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0.976313660851131
+"112","bcra","above","2017-06-28","20ft_seine",2,400,"","largemouth",1,0.976313660851131,"Schneider, James C., P. W. Laarman, and H. Gowing. 2000. Length-weight relationships. Chapter 17 in Schneider, James C. (ed.) 2000. Manual of fisheries survey methods II: with periodic updates. Michigan Department of Natural Resources, Fisheries Special Report 25, Ann Arbor.","length_wt_regression",0.976313660851131
+"113","bcra","below","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","yoy",0,0,NA,NA,0
+"114","bcra","below","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","yoy",0,0,NA,NA,0
+"115","bcra","above","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","yoy",0,0,NA,NA,0
+"116","bcra","above","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","yoy",0,0,NA,NA,0
+"117","bcra","below","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","yoy",1,0,NA,NA,0
+"118","bcra","below","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","yoy",1,0,NA,NA,0
+"119","bcra","above","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","yoy",4,0,NA,NA,0
+"120","bcra","above","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","yoy",0,0,NA,NA,0
+"121","bcra","below","2017-06-23","20ft_seine",1,400,"","yoy",0,0.1,"guess of authors (2017)","length_wt_regression",0
+"122","bcra","below","2017-06-23","20ft_seine",2,400,"","yoy",20,0.1,"guess of authors (2017)","length_wt_regression",2
+"123","bcra","above","2017-06-23","20ft_seine",1,400,"","yoy",0,0.1,"guess of authors (2017)","length_wt_regression",0
+"124","bcra","above","2017-06-23","20ft_seine",2,400,"","yoy",0,0.1,"guess of authors (2017)","length_wt_regression",0
+"125","bcra","below","2017-06-28","20ft_seine",1,400,"","yoy",0,0.1,"guess of authors (2017)","length_wt_regression",0
+"126","bcra","below","2017-06-28","20ft_seine",2,400,"","yoy",0,0.1,"guess of authors (2017)","length_wt_regression",0
+"127","bcra","above","2017-06-28","20ft_seine",1,400,"","yoy",0,0.1,"guess of authors (2017)","length_wt_regression",0
+"128","bcra","above","2017-06-28","20ft_seine",2,400,"","yoy",0,0.1,"guess of authors (2017)","length_wt_regression",0
+"129","bcra","below","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","smallmouth_buffalo",0,0,NA,NA,0
+"130","bcra","below","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","smallmouth_buffalo",0,0,NA,NA,0
+"131","bcra","above","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","smallmouth_buffalo",0,0,NA,NA,0
+"132","bcra","above","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","smallmouth_buffalo",0,0,NA,NA,0
+"133","bcra","below","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","smallmouth_buffalo",0,0,NA,NA,0
+"134","bcra","below","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","smallmouth_buffalo",0,0,NA,NA,0
+"135","bcra","above","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","smallmouth_buffalo",2,0,NA,NA,0
+"136","bcra","above","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","smallmouth_buffalo",0,0,NA,NA,0
+"137","bcra","below","2017-06-23","20ft_seine",1,400,"","smallmouth_buffalo",0,0.3,"Warmbold (2016)","direct_mass_measure",0
+"138","bcra","below","2017-06-23","20ft_seine",2,400,"","smallmouth_buffalo",0,0.3,"Warmbold (2016)","direct_mass_measure",0
+"139","bcra","above","2017-06-23","20ft_seine",1,400,"","smallmouth_buffalo",41,0.3,"Warmbold (2016)","direct_mass_measure",12.3
+"140","bcra","above","2017-06-23","20ft_seine",2,400,"","smallmouth_buffalo",4,0.3,"Warmbold (2016)","direct_mass_measure",1.2
+"141","bcra","below","2017-06-28","20ft_seine",1,400,"","smallmouth_buffalo",0,0.3,"Warmbold (2016)","direct_mass_measure",0
+"142","bcra","below","2017-06-28","20ft_seine",2,400,"","smallmouth_buffalo",0,0.3,"Warmbold (2016)","direct_mass_measure",0
+"143","bcra","above","2017-06-28","20ft_seine",1,400,"","smallmouth_buffalo",4,0.3,"Warmbold (2016)","direct_mass_measure",1.2
+"144","bcra","above","2017-06-28","20ft_seine",2,400,"","smallmouth_buffalo",19,0.3,"Warmbold (2016)","direct_mass_measure",5.7
+"145","bcra","below","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","crappie",0,0,NA,NA,0
+"146","bcra","below","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","crappie",0,0,NA,NA,0
+"147","bcra","above","2017-05-31","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","crappie",0,0,NA,NA,0
+"148","bcra","above","2017-05-31","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","crappie",0,0,NA,NA,0
+"149","bcra","below","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","crappie",0,0,NA,NA,0
+"150","bcra","below","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","crappie",0,0,NA,NA,0
+"151","bcra","above","2017-06-12","20ft_seine",1,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","crappie",0,0,NA,NA,0
+"152","bcra","above","2017-06-12","20ft_seine",2,400,"original notes had sand and river shiners, but these were all converted to spotfin shiners after voucher ids","crappie",0,0,NA,NA,0
+"153","bcra","below","2017-06-23","20ft_seine",1,400,"","crappie",3,0.4,"guess of authors (2017)","length_wt_regression",1.2
+"154","bcra","below","2017-06-23","20ft_seine",2,400,"","crappie",2,0.4,"guess of authors (2017)","length_wt_regression",0.8
+"155","bcra","above","2017-06-23","20ft_seine",1,400,"","crappie",0,0.4,"guess of authors (2017)","length_wt_regression",0
+"156","bcra","above","2017-06-23","20ft_seine",2,400,"","crappie",0,0.4,"guess of authors (2017)","length_wt_regression",0
+"157","bcra","below","2017-06-28","20ft_seine",1,400,"","crappie",0,0.4,"guess of authors (2017)","length_wt_regression",0
+"158","bcra","below","2017-06-28","20ft_seine",2,400,"","crappie",0,0.4,"guess of authors (2017)","length_wt_regression",0
+"159","bcra","above","2017-06-28","20ft_seine",1,400,"","crappie",0,0.4,"guess of authors (2017)","length_wt_regression",0
+"160","bcra","above","2017-06-28","20ft_seine",2,400,"","crappie",0,0.4,"guess of authors (2017)","length_wt_regression",0
