@@ -1,21 +1,21 @@
-date,id,location,trt2,trt,tot,shortnose_gar,emerald_shiner,sand_shiner,river_shiner,spotfin_shiner,bluegill_juv,green_sunfish,fathead_minnow,largemouth_juv,orange_spotted_sunfish,yoy,smallmouth_buffalo,crappie
-6/30/2017,2,Below,Exclusion,exc,4,,,,,,3,,1,,,,,
-6/30/2017,3,Below,Exclusion,exc,6,,,,,,,,,,,5,1,
-6/30/2017,5,Above,Exclusion,exc,4,,,,,,,,4,,,,,
-6/30/2017,6,Above,Exclusion,exc,3,,,,,2,,,1,,,,,
-6/30/2017,7,Below,Exclusion,exc,7,,,,,1,1,,,,,5,,
-6/30/2017,9,Above,Exclusion,exc,2,,,,,2,,,,,,,,
-6/30/2017,1,Above,Exclusion,exc,0,,,,,,,,,,,,,
-6/30/2017,2,Above,Cage Control,ctrl,0,,,,,,,,,,,,,
-6/30/2017,3,Above,Exclusion,exc,0,,,,,,,,,,,,,
-6/30/2017,4,Above,Ambient,ctrl,0,,,,,,,,,,,,,
-6/30/2017,7,Above,Ambient,ctrl,0,,,,,,,,,,,,,
-6/30/2017,8,Above,Cage Control,ctrl,0,,,,,,,,,,,,,
-6/30/2017,10,Above,Ambient,ctrl,0,,,,,,,,,,,,,
-6/30/2017,1,Below,Ambient,ctrl,0,,,,,,,,,,,,,
-6/30/2017,4,Below,Ambient,ctrl,0,,,,,,,,,,,,,
-6/30/2017,5,Below,Exclusion,exc,0,,,,,,,,,,,,,
-6/30/2017,6,Below,Ambient,ctrl,0,,,,,,,,,,,,,
-6/30/2017,8,Below,Ambient,ctrl,0,,,,,,,,,,,,,
-6/30/2017,9,Below,Cage Control,ctrl,0,,,,,,,,,,,,,
-6/30/2017,10,Below,Ambient,ctrl,0,,,,,,,,,,,,,
+"","date","station","trt2","trt","fish_in_cages","shortnose_gar","emerald_shiner","sand_shiner","river_shiner","spotfin_shiner","bluegill_juv","green_sunfish","fathead_minnow","largemouth_juv","orange_spotted_sunfish","yoy","smallmouth_buffalo","crappie"
+"1","6/30/2017","2_Below","Exclusion","exc",4,NA,NA,NA,NA,NA,3,NA,1,NA,NA,NA,NA,NA
+"2","6/30/2017","3_Below","Exclusion","exc",6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,5,1,NA
+"3","6/30/2017","5_Above","Exclusion","exc",4,NA,NA,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA
+"4","6/30/2017","6_Above","Exclusion","exc",3,NA,NA,NA,NA,2,NA,NA,1,NA,NA,NA,NA,NA
+"5","6/30/2017","7_Below","Exclusion","exc",7,NA,NA,NA,NA,1,1,NA,NA,NA,NA,5,NA,NA
+"6","6/30/2017","9_Above","Exclusion","exc",2,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA
+"7","6/30/2017","1_Above","Exclusion","exc",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"8","6/30/2017","2_Above","Cage Control","ctrl",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"9","6/30/2017","3_Above","Exclusion","exc",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"10","6/30/2017","4_Above","Ambient","ctrl",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"11","6/30/2017","7_Above","Ambient","ctrl",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"12","6/30/2017","8_Above","Cage Control","ctrl",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"13","6/30/2017","10_Above","Ambient","ctrl",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"14","6/30/2017","1_Below","Ambient","ctrl",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"15","6/30/2017","4_Below","Ambient","ctrl",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"16","6/30/2017","5_Below","Exclusion","exc",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"17","6/30/2017","6_Below","Ambient","ctrl",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"18","6/30/2017","8_Below","Ambient","ctrl",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"19","6/30/2017","9_Below","Cage Control","ctrl",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"20","6/30/2017","10_Below","Ambient","ctrl",0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
