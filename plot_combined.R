@@ -33,3 +33,5 @@ b2 <- emerge_plot_fishcage + theme(text = element_text(size = 14))
 
 plot_all_fishcage <- plot_grid(a2,b2, ncol = 1,
                       align = "v")
+ggsave(plot_all_fishcage, file = "plot_all_fishcage.tiff", dpi = 600, width = 7, height = 6)
+saveRDS(plot_all_fishcage, file = "plot_all_fishcage.rds")
