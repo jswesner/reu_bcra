@@ -28,10 +28,10 @@ brm_ben_m2 <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/brm_
 
 
 #Bayesian model of benthic individual dry mass
-brm_ind_mg <- brm(mg_dm_per_ind ~ 0 + taxon + (1|experiment), data = ben_dm_ind,
-                  family = Gamma(link = "log"),
-                  prior = c(prior(normal(0,1), class = "b")),
-                  cores = 4)
+#brm_ind_mg <- brm(mg_dm_per_ind ~ 0 + taxon + (1|experiment), data = ben_dm_ind,
+#                  family = Gamma(link = "log"),
+#                  prior = c(prior(normal(0,1), class = "b")),
+#                 cores = 4)
 
 #check model
 brm_ind_mg
@@ -115,7 +115,9 @@ total_mg <- marg_post2 %>%
 raw_ben_plot <- as_tibble(ben_dm_tot) %>% 
   mutate(date = mdy(as.factor(date)),
          trt = str_replace_all(trt,c("ctrl" = "fish",
-                                     "exc" = "no fish")))
+                                     "exc" = "no fish"))) %>% 
+  group_by(date, id, location, trt) %>% 
+  summarize(mg_dm = sum(benthic_mg_dm_m2))
 
 
 plot_benthic <- total_mg %>%
@@ -135,7 +137,7 @@ plot_benthic <- total_mg %>%
   theme(legend.title = element_blank(),
         axis.title.x =element_blank(),
         text = element_text(size = 20))+
-  geom_point(data = raw_ben_plot, aes(y = benthic_mg_dm_m2, x = date, fill = trt), 
+  geom_point(data = raw_ben_plot, aes(y = mg_dm, x = date, fill = trt), 
              position = position_dodge(width = 2),
              shape = 16, size = 1.3) +
   ylab(bquote('mg dry mass/'~m^2)) +
@@ -152,7 +154,7 @@ saveRDS(plot_benthic, file = "plot_benthic.rds")
 
 # Summarize posterior -----------------------------------------------------
 #summary stats by date and treatment
-total_mg %>%
+tot_benthic <- total_mg %>%
   ungroup() %>% 
   mutate(trt = str_replace_all(trt,c("ctrl" = "no fish",
                                      "exc" = "fish"))) %>% 
@@ -162,6 +164,9 @@ total_mg %>%
             sd = sd(mg_dm),
             low95 = quantile(mg_dm, probs = 0.025),
             high95 = quantile(mg_dm, probs = 0.975))
+
+
+write.csv(tot_benthic, file = "tot_benthic.csv")
 
 
 #proportion difference by trt
@@ -180,7 +185,6 @@ total_mg %>%
             low95 = quantile(prop_reduction, probs = 0.025),
             high95 = quantile(prop_reduction, probs = 0.975))
 
-
 #probability of a difference
 total_mg %>%
   ungroup() %>% 
@@ -192,4 +196,45 @@ total_mg %>%
   clean_names() %>% 
   mutate(diff = fish-no_fish) %>% 
   summarize(prob_nofish_higher = sum(diff<0)/4000)
+
+
+
+
+# Fish in cages -----------------------------------------------------------
+
+fish_in_cages <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/fish_in_cages.csv")) %>% 
+  mutate(date = mdy(date))
+
+fish_in_cages_select <- fish_in_cages %>%  select(fish_in_cages, station)
+
+benthic_plot_fishcage <- raw_ben_plot %>% 
+  unite("station", c("id","location")) %>%
+  left_join(fish_in_cages_select) %>% 
+  mutate(fish_in_cages = ifelse(date == "2017-06-02",0, fish_in_cages)) %>% 
+  ggplot(aes(x = date, y = mg_dm, fill = trt, size = fish_in_cages)) +
+  geom_point(position = position_dodge(width = 2),
+             shape = 21, alpha = 0.8) +
+  scale_fill_grey(name = "")+
+  scale_size_continuous(name = "# fish in cages on 2017-06-30")+
+  theme_classic()+
+  theme(axis.title.x =element_blank())+
+  coord_cartesian(xlim = as.Date(c('2017-05-28', '2017-06-29'), 
+                                 format="%Y-%m-%d")) +
+  ylab(bquote('mg dry mass/'~m^2)) +
+  geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
+  annotate("text",x=as.Date("2017-06-02")+7.5,y=3200,label="start of experiment")+
+  geom_segment(aes(x = as.Date("2017-06-05"), y = 3200, 
+                   xend=as.Date("2017-06-02"), yend = 3200,
+                   size = 0.01))+
+  #scale_y_log10()+
+  ggtitle("a) Benthic insects")+
+  #annotate("text",x=as.Date("2017-06-02")+7.5,y=320,label="start of experiment")+
+  #geom_segment(aes(x = as.Date("2017-06-05"), y = 320, xend=as.Date("2017-06-02"), yend = 320))+
+  #scale_y_log10()+
+  NULL
+
+
+
+ggsave(benthic_plot_fishcage, file = "benthic_plot_fishcage.tiff", dpi = 600, width = 7, height = 3.5, units = "in")
+saveRDS(benthic_plot_fishcage, file = "benthic_plot_fishcage.rds")
 

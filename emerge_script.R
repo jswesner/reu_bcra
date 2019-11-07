@@ -1,4 +1,5 @@
-#Packages
+# Load packages -----------------------------------------------------------
+
 library(tidyverse)
 library(lubridate)
 library(brms)
@@ -6,7 +7,6 @@ library(ggridges)
 library(RCurl)
 library(janitor)
 
-#Summary of counts within traps
 
 # Load data ---------------------------------------------------------------
 
@@ -200,3 +200,46 @@ sum_emerge <- post_emerge_mg %>%
             high95 = quantile(tot_emerge, probs = 0.975))
 
 write.csv(sum_emerge, file = "sum_emerge.csv")  
+
+
+
+# Fish in cages -----------------------------------------------------------
+
+#Fish were found in 5 of the exclusion cages at the end of the experiment. To check their
+#influence, plot emergence with fish in cages as an indicator. Did having fish tend to reduce
+#emergence in the cages?
+
+#get data on fish in cages at the end of the experiment
+fish_in_cages <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/fish_in_cages.csv")) %>% 
+  mutate(date = mdy(date))
+
+fish_in_cages_select <- fish_in_cages %>%  select(fish_in_cages, station)
+
+
+#plot it
+emerge_plot_fishcage <- raw_data_plot %>% 
+  unite("station", c("stat","loc")) %>%
+  left_join(fish_in_cages_select) %>% 
+  mutate(fish_in_cages = ifelse(date == "2017-05-28",0,fish_in_cages),
+         fish_01 = ifelse(fish_in_cages == 0,0, 1)) %>% 
+  ggplot(aes(x = date, y = mg_dm, fill = trt2, size = fish_in_cages)) +
+  geom_point(aes(y = tot_mg_dm_m2_d), 
+             position = position_dodge(width = 2),
+             shape = 21, alpha = 0.8) +
+  scale_fill_grey(name = "")+
+  scale_size_continuous(name = "# fish in cages on 2017-06-30")+
+  theme_classic()+
+  theme(axis.title.x =element_blank())+
+  coord_cartesian(xlim = as.Date(c('2017-05-28', '2017-06-29'), 
+                                 format="%Y-%m-%d")) +
+  ylab(bquote('mg dry mass/'~m^2/d)) +
+  geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
+  #annotate("text",x=as.Date("2017-06-02")+7.5,y=320,label="start of experiment")+
+  #geom_segment(aes(x = as.Date("2017-06-05"), y = 320, xend=as.Date("2017-06-02"), yend = 320))+
+  #scale_y_log10()+
+  ggtitle("b) Emerging insects") +
+  NULL
+
+ggsave(emerge_plot_fishcage, file = "emerge_plot_fishcage.tiff", dpi = 600, width = 7, height = 3.5, units = "in")
+saveRDS(emerge_plot_fishcage, file = "emerge_plot_fishcage.rds")
+
