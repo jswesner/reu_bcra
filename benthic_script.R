@@ -223,7 +223,7 @@ benthic_plot_fishcage <- raw_ben_plot %>%
   ylab(bquote('mg dry mass/'~m^2)) +
   geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
   annotate("text",x=as.Date("2017-06-02")+7.5,y=3200,label="start of experiment")+
-  geom_segment(aes(x = as.Date("2017-06-05"), y = 3200, 
+  geom_segment(aes(x = as.Date("2017-06-04"), y = 3200, 
                    xend=as.Date("2017-06-02"), yend = 3200,
                    size = 0.01))+
   #scale_y_log10()+
