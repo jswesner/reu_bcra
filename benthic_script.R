@@ -211,9 +211,9 @@ benthic_plot_fishcage <- raw_ben_plot %>%
   unite("station", c("id","location")) %>%
   left_join(fish_in_cages_select) %>% 
   mutate(fish_in_cages = ifelse(date == "2017-06-02",0, fish_in_cages)) %>% 
-  ggplot(aes(x = date, y = mg_dm, fill = trt, size = fish_in_cages)) +
+  ggplot(aes(x = date, y = mg_dm, fill = trt)) +
   geom_point(position = position_dodge(width = 2),
-             shape = 21, alpha = 0.8) +
+             shape = 21, alpha = 0.8, aes(size = fish_in_cages)) +
   scale_fill_grey(name = "")+
   scale_size_continuous(name = "# fish in cages on 2017-06-30")+
   theme_classic()+
@@ -224,8 +224,8 @@ benthic_plot_fishcage <- raw_ben_plot %>%
   geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
   annotate("text",x=as.Date("2017-06-02")+7.5,y=3200,label="start of experiment")+
   geom_segment(aes(x = as.Date("2017-06-04"), y = 3200, 
-                   xend=as.Date("2017-06-02"), yend = 3200,
-                   size = 0.01))+
+                   xend=as.Date("2017-06-02"), yend = 3200),
+               size = 0.1)+
   #scale_y_log10()+
   ggtitle("a) Benthic insects")+
   #annotate("text",x=as.Date("2017-06-02")+7.5,y=320,label="start of experiment")+
