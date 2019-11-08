@@ -3,6 +3,7 @@ library(tidyverse)
 library(ggridges)
 library(lubridate)
 library(RCurl)
+library(cowplot)
 
 
 # Load data and brms model (or re-run the model below) ---------------------------------------------------------------
@@ -80,12 +81,30 @@ post_agg <- post %>%
   group_by(species,date2,prey_taxon) %>% 
   ungroup()
 
+#make a correction column that contains zeros and ones to indicate 
+#whether a prey item was present
+
+correction <- d %>% 
+  select(species, date, prey_taxon, mg_diet_dm) %>%
+  group_by(species, date, prey_taxon) %>% 
+  summarize(sum_dm = sum(mg_diet_dm)) %>% 
+  pivot_wider(names_from = prey_taxon, 
+              values_from = sum_dm) %>% 
+  mutate(chironomidae = chiro_l + chiro_a + chiro_p,
+         coleoptera = coleo_ad + coleo_l) %>% 
+  select(-chiro_a, -chiro_p, -chiro_l, -coleo_l, -coleo_ad) %>% 
+  gather(prey_taxon, sum_dm, c(-species,-date)) %>% 
+  mutate(correction = ifelse(sum_dm >0, 1, 0)) %>% 
+  select(-sum_dm)
+  
+
 #combine posts with correction
 post1000_agg_0 <- post_agg %>% 
+  left_join(correction) %>%
   ungroup() %>% 
   mutate(species = fct_relevel(species, c("bluegill","spotfin")))
 
-#plot total mg prey
+#total mg prey raw data
 plot_mg_rawdata <- d %>% 
   select(id, species, date2, prey_taxon, mg_diet_dm) %>% 
   pivot_wider(names_from = prey_taxon,
@@ -95,12 +114,12 @@ plot_mg_rawdata <- d %>%
   select(-chiro_l, -chiro_a, -chiro_p, -coleo_ad,-coleo_l) %>% 
   gather(prey_taxon, mg_dm_diet, c(-id,-species,-date2))
   
-  
+#posterior plotting data  excluding fish_yoy
 plot_mg_post <- post1000_agg_0 %>%
   filter(prey_taxon != "fish_yoy") %>% 
   mutate(mg_dm_diet_corrected = mg_dm_diet*correction)
 
-
+#plot_without fish_yoy
 plot_mg_diet <- 
   ggplot(data = plot_mg_post,aes(x = reorder(prey_taxon,mg_dm_diet), y = mg_dm_diet_corrected, 
              fill = date2,
@@ -126,9 +145,53 @@ plot_mg_diet <-
              size = 0.7,
              position = position_jitterdodge(dodge.width = -.8,
                                              jitter.width = 0,
+                                             jitter.height = 0))+
+  guides(fill = F)
+
+#posterior_with_fishyoy only
+plot_mg_post_withfish <- post1000_agg_0 %>%
+  filter(prey_taxon == "fish_yoy") %>% 
+  mutate(mg_dm_diet_corrected = mg_dm_diet*correction)
+
+#plot_with_fish_yoy only
+plot_mg_diet_fishyoy <- 
+  ggplot(data = plot_mg_post_withfish,aes(x = prey_taxon, y = mg_dm_diet, 
+                                          fill = date2,
+                                          group = interaction(prey_taxon, date2))) +
+  geom_boxplot(outlier.shape = NA, position = position_dodge(-.8), size = 0.5,
+               fatten = 1)+
+  #scale_y_log10()+
+  #ylim(c(0.1,30)) +
+  facet_grid(.~species) +
+  #geom_point(alpha = 0.5) +
+  #geom_violin() + +
+  #scale_y_log10()  +
+  scale_fill_brewer(name = "Bayesian posterior") +
+  coord_flip(ylim = c(0,1100)) +
+  theme_classic() +
+  theme(legend.position = "top",
+        axis.title.x = element_blank())+
+  xlab("") +
+  geom_point(data = subset(plot_mg_rawdata,prey_taxon == "fish_yoy"),
+             aes(x = reorder(prey_taxon,mg_dm_diet), y = mg_dm_diet,
+                 group = interaction(prey_taxon, date2)),
+             alpha = 0.4,
+             size = 0.7,
+             position = position_jitterdodge(dodge.width = -.8,
+                                             jitter.width = .3,
                                              jitter.height = 0))
 
-#ggsave(plot_mg_diet, file = "plot_mg_diet.tiff", dpi = 600, width = 7, height = 7, units = "in")
+#combine plots with and without fish_yoy so that scales for insects are not overwhelmed by
+#fish yoy
+
+plot_all_diet <- plot_grid(plot_mg_diet_fishyoy, plot_mg_diet,
+                           rel_heights = c(0.3,1),
+                           align = "v",
+                           ncol = 1)
+
+
+
+ggsave(plot_all_diet , file = "plot_mg_diet.tiff", dpi = 600, width = 7, height = 10, units = "in")
 
 
 
@@ -286,10 +349,7 @@ prop_chiro_without_fish %>%
             sd = sd(prop_chiro),
             low95 = quantile(prop_chiro, probs = 0.025),
             high95 = quantile(prop_chiro, probs = 0.975)) %>% 
-  arrange(-mean) 
-
-
-
+  arrange(species,date2,-mean) 
 
 
 #summary stats of prop chiro
@@ -301,5 +361,5 @@ prop_chiro_pupae %>%
             sd = sd(prop_pa),
             low95 = quantile(prop_pa, probs = 0.025),
             high95 = quantile(prop_pa, probs = 0.975)) %>% 
-  arrange(-mean)
-
+  mutate_if(is.numeric, round, digits = 2) %>% 
+  arrange(species,date2,-mean) 

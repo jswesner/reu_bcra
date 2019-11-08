@@ -226,6 +226,7 @@ emerge_plot_fishcage <- raw_data_plot %>%
   geom_point(aes(y = tot_mg_dm_m2_d), 
              position = position_dodge(width = 2),
              shape = 21, alpha = 0.8) +
+  #geom_text_repel(aes(label = station))+
   scale_fill_grey(name = "")+
   scale_size_continuous(name = "# fish in cages on 2017-06-30")+
   theme_classic()+
@@ -237,7 +238,7 @@ emerge_plot_fishcage <- raw_data_plot %>%
   #annotate("text",x=as.Date("2017-06-02")+7.5,y=320,label="start of experiment")+
   #geom_segment(aes(x = as.Date("2017-06-05"), y = 320, xend=as.Date("2017-06-02"), yend = 320))+
   #scale_y_log10()+
-  ggtitle("b) Emerging insects") +
+  ggtitle("b) Emerging aquatic insects") +
   NULL
 
 ggsave(emerge_plot_fishcage, file = "emerge_plot_fishcage.tiff", dpi = 600, width = 7, height = 3.5, units = "in")
