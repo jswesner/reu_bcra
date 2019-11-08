@@ -295,7 +295,7 @@ sum_diet <- post_agg %>%
 
 diet_post_proportion_nostage <- post_agg %>% 
   left_join(sum_diet) %>% 
-  group_by(species, date2, prey_taxon) %>% 
+  group_by(species, prey_taxon) %>% 
   mutate(prop = mg_dm_diet/sum) %>% 
   summarize(mean = mean(prop),
             median = median(prop),
@@ -304,7 +304,7 @@ diet_post_proportion_nostage <- post_agg %>%
             sd = sd(prop),
             low95 = quantile(prop, probs = 0.025),
             high95 = quantile(prop, probs = 0.975)) %>% 
-  arrange(-mean) %>% 
+  arrange(species,-mean) %>% 
   mutate(aggregation = "no_stage_structure")
 
 #with stages
