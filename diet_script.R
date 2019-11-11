@@ -4,6 +4,7 @@ library(ggridges)
 library(lubridate)
 library(RCurl)
 library(cowplot)
+library(janitor)
 
 
 # Load data and brms model (or re-run the model below) ---------------------------------------------------------------
@@ -255,23 +256,25 @@ prop_chiro_pupae <- as_tibble(post) %>%
 both <- prop_chiro_pupae %>% left_join(prop_chiro_without_fish) %>% 
   select(iter, species, date2, prop_pa, prop_chiro) %>% 
   gather(facet, proportion, c("prop_pa", "prop_chiro")) %>% 
-  mutate(facet = str_replace_all(facet, c("prop_pa" = "Proportion pupa + adult",
-                                          "prop_chiro" = "Proportion chironomid")))
+  mutate(facet = str_replace_all(facet, c("prop_pa" = "b) Proportion pupa + adult",
+                                          "prop_chiro" = "a) Proportion chironomid")))
 
 
 plot_prop_chiro_pup <- both %>%  
-  filter(species == "Bluegill" | species == "Spotfin Shiner") %>% 
-  ggplot(aes(x = proportion, y = fct_rev(date2), fill = species))+
-  geom_density_ridges() +
-  scale_fill_grey()+
-  theme_ridges() +
-  theme(legend.title = element_blank())+
+  #filter(species == "Bluegill" | species == "Spotfin Shiner") %>% 
+  ggplot(aes(x = proportion, y = fct_rev(date2), fill = fct_relevel(species,"River Shiner", "Largemouth Bass")))+
+  geom_density_ridges(alpha = 1) +
+  #scale_fill_grey(start = 1, end = 0)+
+  scale_fill_manual(values = c("grey100","grey92","grey50","grey0"))+
+  theme_classic() +
+  theme(legend.title = element_blank(),
+        strip.text = element_text(angle = 0, hjust = 0))+
   ylab("Sample Date")+
   xlab("Proportion in diets")+
   facet_wrap(~facet)
 
 
-#ggsave(plot_prop_chiro_pup, file = "plot_prop_chiro_pup.tiff", dpi = 600, width = 8, height = 5, units = "in")
+ggsave(plot_prop_chiro_pup, file = "plot_prop_chiro_pup.tiff", dpi = 600, width = 8, height = 5, units = "in")
 
 
 
@@ -354,7 +357,7 @@ prop_chiro_without_fish %>%
 
 #summary stats of prop chiro
 #WITH FISH_yoy
-prop_chiro_pupae %>% 
+prop_chiro_pupae_tbl <- prop_chiro_pupae %>% 
   group_by(species, date2) %>% 
   summarize(mean = mean(prop_pa),
             median = median(prop_pa),
@@ -363,3 +366,79 @@ prop_chiro_pupae %>%
             high95 = quantile(prop_pa, probs = 0.975)) %>% 
   mutate_if(is.numeric, round, digits = 2) %>% 
   arrange(species,date2,-mean) 
+
+write.csv(prop_chiro_pupae_tbl, file = "prop_chiro_pupae.csv")
+
+#probability of a difference between species
+prop_chiro_pupae %>% 
+  select(iter,species, date2, prop_pa) %>% 
+  pivot_wider(names_from = species,
+              values_from = prop_pa) %>% 
+  clean_names() %>% 
+  group_by(date2) %>% 
+  mutate(diff_spot_blue = spotfin_shiner - bluegill) %>% 
+  summarize(prob_spot_greaterthan_blue = sum(diff_spot_blue>0)/length(diff_spot_blue))
+
+#magnitude of difference
+prop_chiro_pupae %>% 
+  select(iter,species, date2, prop_pa) %>% 
+  pivot_wider(names_from = species,
+              values_from = prop_pa) %>% 
+  clean_names() %>% 
+  group_by(date2) %>% 
+  mutate(diff_spot_blue = spotfin_shiner - bluegill) %>% 
+  summarize(mean = mean(diff_spot_blue),
+            low95 = quantile(diff_spot_blue, probs = 0.025),
+            upper95 = quantile(diff_spot_blue, probs = 0.975))
+
+#overall mean prop pupae
+diet_mgdm %>% 
+  select(species, date, prey_taxon, mg_diet_dm) %>% 
+  filter(grepl("chiro",prey_taxon)) %>% 
+  summarize(tot_chiro_raw = sum(mg_diet_dm))
+
+prop_chiro_pupae %>% 
+  summarize(mean = mean(prop_pa),
+            low95 = quantile(prop_pa, probs = 0.025),
+            upper95 = quantile(prop_pa, probs = 0.975))
+
+# Summarize raw data ------------------------------------------------------
+
+#freq_occurence
+diet_mgdm %>% 
+  mutate(chiro_ind = ifelse(grepl("chiro", prey_taxon) & mg_diet_dm > 0, 1, 0)) %>% 
+  group_by(id) %>% 
+  summarize(chiro_present = sum(chiro_ind)) %>% 
+  mutate(chiro_pres = ifelse(chiro_present > 0, 1,0)) 
+  summarize(prop_pres = sum(chiro_pres)/length(id))
+
+
+sp_id <- diet_mgdm %>% select(id, species) %>% distinct(id, .keep_all = T)
+
+freq_occur <- diet_mgdm %>% 
+  filter(species != "quillback") %>% 
+  select(mg_diet_dm, id, prey_taxon) %>% 
+  pivot_wider(names_from = prey_taxon,
+              values_from = mg_diet_dm) %>% 
+  mutate(chiro = chiro_l + chiro_a + chiro_p) %>% 
+  select(-chiro_l, -chiro_a, -chiro_p) %>% 
+  gather(prey_taxon, mg_diet_dm, c(-id)) %>% 
+   # mutate(chiro_ind = ifelse(grepl("chiro", prey_taxon) & mg_diet_dm > 0, 1, 0)) %>% 
+  mutate(taxon_pres = ifelse(mg_diet_dm > 0, 1,0))%>% 
+  left_join(sp_id) %>% 
+  group_by(prey_taxon, species) %>% 
+  summarize(prop_pres = sum(taxon_pres)/length(id)) %>% 
+  arrange(-prop_pres, species) %>% 
+  pivot_wider(names_from = species, 
+              values_from = prop_pres) %>% 
+  select(prey_taxon, bluegill, spotfin, largemouth, river_shiner)
+
+write.csv(freq_occur, file = "freq_occur.csv")  
+
+diet_mgdm %>% 
+  distinct(id, .keep_all = T) %>% 
+  select(species, date) %>% 
+  group_by(species, date) %>% 
+  summarize(n = n()) %>% 
+  pivot_wider(names_from = date,
+              values_from = n)
