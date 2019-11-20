@@ -145,7 +145,7 @@ plot_benthic <- total_mg %>%
   annotate("text",x=as.Date("2017-06-02")+7.5,y=3200,label="start of experiment")+
   geom_segment(aes(x = as.Date("2017-06-05"), y = 3200, xend=as.Date("2017-06-02"), yend = 3200))+
   #scale_y_log10()+
-  ggtitle("a) Benthic insects")
+  ggtitle("b) Benthic insects")
 
 
 ggsave(plot_benthic, file = "plot_benthic.tiff", dpi = 600, width = 7, height = 3.5, units = "in")
