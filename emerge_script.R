@@ -155,8 +155,10 @@ plot_emerge <- post_emerge_mg %>%
   geom_point(data = raw_data_plot, aes(y = tot_mg_dm_m2_d,fill = trt2), 
              position = position_dodge(width = 2),
              shape = 16, size = 1.3) +
+  annotate("text",x=as.Date("2017-06-02")+7.5,y=1500,label="start of experiment")+
   ylab(bquote('mg dry mass/'~m^2/d)) +
   geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
+  geom_segment(aes(x = as.Date("2017-06-05"), y = 1500, xend=as.Date("2017-06-02"), yend = 1500))+
   #annotate("text",x=as.Date("2017-06-02")+7.5,y=320,label="start of experiment")+
   #geom_segment(aes(x = as.Date("2017-06-05"), y = 320, xend=as.Date("2017-06-02"), yend = 320))+
   #scale_y_log10()+
