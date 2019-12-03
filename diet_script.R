@@ -45,7 +45,7 @@ plot_diet_method <- d %>%
   geom_point(size = 2,position = position_jitterdodge(dodge.width = 0.6,
                                                       jitter.width = 0),
              alpha = .9)+
-  theme_pubr()+
+  theme_bw()+
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.3, size = 10))+
   scale_y_log10()+
   scale_color_grey(start = 0.2, end = 0.7)+
@@ -56,6 +56,8 @@ plot_diet_method <- d %>%
   NULL
 
 ggsave(plot_diet_method, file = "plot_diet_method.tiff", dpi = 600, width = 6.5, height = 7)
+
+priors <- get_prior(mgdm01 ~ prey_taxon*date2*species, family = Gamma(link = "log"),data =d)
 
 # Bayesian model ----------------------------------------------------------
 
@@ -299,14 +301,6 @@ ggsave(plot_prop_chiro_pup, file = "plot_prop_chiro_pup.tiff", dpi = 600, width 
 
 
 # Summarize posteriors ----------------------------------------------------
-#function for posterior summaries
-post_summary <- function(d){
-  summarize(mean = mean(d),
-            median = median(d),
-            sd = sd(d),
-            low95 = quantile(sd, probs = 0.025),
-            hihg95 = quantile(sd, probs = 0.975))
-}
 
 
 #summary stats of dry mass in fish diets

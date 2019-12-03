@@ -154,6 +154,9 @@ ggplot() +
   facet_grid(date ~ aggregation, scales = "free")+
   geom_point(data = nodes, aes(x = x, y = y, fill = color, shape = color),
              size=8) +
+  guides(size = guide_legend("Proportion of diet"),
+         color = guide_legend("") ,
+         alpha = F) +
   #theme_classic() +
   theme(panel.background = element_rect(color = "black", fill = "white"),
     axis.line = element_line(color = "black"),
@@ -168,10 +171,6 @@ ggplot() +
   #scale_color_grey(start = 0.2, end = 0.8)+
   scale_y_continuous(breaks = c(0.5,1,1.5,2), labels = c("1","2","3","4"))+
   coord_cartesian(ylim = c(0.4,2.1)) +
-  guides(size = guide_legend("Proportion of diet"),
-         shape = guide_legend("Taxon"),
-         color = F,
-         alpha = F)+
   ylab("Trophic position")
 
 plot_foodweb
