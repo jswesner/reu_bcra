@@ -36,6 +36,26 @@ d %>%
   facet_wrap(~species, scales = "free")+
   scale_y_log10()
 
+#compare methods
+plot_diet_method <- d %>% 
+  #filter(number > 1) %>% 
+  #filter(grepl("chiro",prey_taxon)) %>% 
+  ggplot(aes(x = reorder(prey_taxon, -number), y = number + 0.1, color = method,
+             shape = method)) + 
+  geom_point(size = 2,position = position_jitterdodge(dodge.width = 0.6,
+                                                      jitter.width = 0),
+             alpha = .9)+
+  theme_pubr()+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.3, size = 10))+
+  scale_y_log10()+
+  scale_color_grey(start = 0.2, end = 0.7)+
+  facet_grid(species ~ .) +
+  xlab("prey_taxon")+
+  ylab("Number per stomach")+
+  #coord_flip() +
+  NULL
+
+ggsave(plot_diet_method, file = "plot_diet_method.tiff", dpi = 600, width = 6.5, height = 7)
 
 # Bayesian model ----------------------------------------------------------
 
@@ -279,6 +299,16 @@ ggsave(plot_prop_chiro_pup, file = "plot_prop_chiro_pup.tiff", dpi = 600, width 
 
 
 # Summarize posteriors ----------------------------------------------------
+#function for posterior summaries
+post_summary <- function(d){
+  summarize(mean = mean(d),
+            median = median(d),
+            sd = sd(d),
+            low95 = quantile(sd, probs = 0.025),
+            hihg95 = quantile(sd, probs = 0.975))
+}
+
+
 #summary stats of dry mass in fish diets
 diet_post <- post_agg %>% 
   group_by(species, date2, prey_taxon) %>% 
@@ -291,6 +321,7 @@ diet_post <- post_agg %>%
 
 #summary stats by proportion of diet items in fish diets
 
+
 #no stages
 sum_diet <- post_agg %>% 
   group_by(species, date2, iter) %>%
@@ -298,7 +329,7 @@ sum_diet <- post_agg %>%
 
 diet_post_proportion_nostage <- post_agg %>% 
   left_join(sum_diet) %>% 
-  group_by(species, prey_taxon) %>% 
+  group_by(species,date2, prey_taxon) %>% 
   mutate(prop = mg_dm_diet/sum) %>% 
   summarize(mean = mean(prop),
             median = median(prop),
@@ -401,6 +432,18 @@ prop_chiro_pupae %>%
   summarize(mean = mean(prop_pa),
             low95 = quantile(prop_pa, probs = 0.025),
             upper95 = quantile(prop_pa, probs = 0.975))
+
+# proportion of pupae + adults
+both %>% 
+  group_by(species, date2, facet) %>% 
+  summarize(mean = mean(proportion),
+            median = median(proportion),
+            sd = sd(proportion),
+            low95 = quantile(proportion, probs = 0.025),
+            hihg95 = quantile(proportion, probs = 0.975)) %>% 
+  arrange(desc(facet))
+
+
 
 # Summarize raw data ------------------------------------------------------
 
