@@ -20,8 +20,42 @@ chiro_mg_dm <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/eme
 emerge_dm_model <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/emerge_dm_model.RDS?raw=true"))
 
 
-# Length-mass regression - chiros -----------------------------------------
+# plot to check for cage-control vs ambient differences
+emerge_reu_mg <- emerge_reu %>%
+  replace(is.na(.), 0) %>%
+  mutate(chiro_mg_dm = chir*.99,
+         doli_mg_dm = doli*.65,
+         tric_mg_dm = tric*.8,
+         odo_mg_dm = odo*6.2,
+         ephem_mg_dm = ephe*1.1,
+         tot_mg_dm = chiro_mg_dm+doli_mg_dm+tric_mg_dm+odo_mg_dm+ephem_mg_dm,
+         tot_mg_dm_m2_d = tot_mg_dm/area/days,
+         date = mdy(date))
 
+plot_emerge_cage_v_amb <- emerge_reu_mg %>% 
+  filter(trt != "Exclusion",
+         date != "2017-05-28") %>% 
+  select(date, trt, chir,cera,doli,ephe,tric, simu, coleo, odo, hem) %>% 
+  gather(taxon, abund, c(-date,-trt)) %>% 
+  ggplot(aes(x = reorder(taxon, -abund), y = abund, color = trt, shape = trt))+
+  geom_point(size = 2,position = position_jitterdodge(dodge.width = 0.6,
+                                                      jitter.width = 0),
+             alpha = .8)+
+  theme_bw()+
+  facet_grid(date~., scales = "free")+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.3, size = 10))+
+  scale_y_log10()+
+  scale_color_grey(start = 0.2, end = 0.7)+
+  xlab("prey_taxon")+
+  ylab("Number per emergence trap")+
+  #coord_flip() +
+  NULL
+
+
+ggsave(plot_emerge_cage_v_amb, file = "plot_emerge_cage_v_amb.tiff", dpi = 600, width = 6.5, height = 7)
+
+
+# Length-mass regression - chiros -----------------------------------------
 
 #plot to check for differences in chiro length over time and treatments
 chiro_ind %>%
@@ -35,7 +69,6 @@ chiro_ind %>%
   ggtitle("Violin plot of chironomid lengths (mm)")+
   NULL
 
-
 #add parameters (a,b) to convert length to mass
 chiro_mg <- chiro_ind %>%
   mutate(a = 0.1, #parameter
@@ -45,7 +78,9 @@ chiro_mg <- chiro_ind %>%
   mutate(mg_dm = a*mm^b) #generate biomass
 
 
-#Fit the Model
+
+# Fit model of chironomid average dry mass -----------------------------------------------------------
+
 #chiro_mg_dm <- brm(mg_dm ~ 1, data=chiro_mg, family=Gamma(link="log"),
 #                 prior=prior(normal(0,2),class="Intercept"))
 
@@ -69,7 +104,7 @@ chiro_adult_ind_scale <- mean(exp(post_chiro_mg$b_Intercept)/post_chiro_mg$shape
 #Dry mass of other taxa were estimated from previous collections at the same site or nearby sites (Wesner et al. in review)
 
 set.seed(2020)
-emerge_reu_mg<-emerge_reu %>%
+emerge_reu_mg <- emerge_reu %>%
   replace(is.na(.), 0) %>%
   mutate(chiro_mg_dm = chir*.99,
          doli_mg_dm = doli*.65,
@@ -85,10 +120,10 @@ emerge_reu_mg$id <- paste(emerge_reu_mg$stat,emerge_reu_mg$loc)
 # Bayesian model mg emergence ---------------------------------------------
 
 #prior predictive
-#emerge_prior_dm_model <- brm(tot_mg_dm_m2_d ~ date*trt2 + (1|id),data=emerge_reu_mg,family=Gamma(link="log"),
- #                            prior=c(prior(normal(1,2),class="Intercept"),
-  #                                   prior=prior(normal(0,4),class="b")),
-   #                          sample_prior = "only")
+# emerge_prior_dm_model <- brm(tot_mg_dm_m2_d ~ date*trt2 + (1|id),data=emerge_reu_mg,family=Gamma(link="log"),
+#                            prior=c(prior(normal(1,2),class="Intercept"),
+#                                   prior=prior(normal(0,4),class="b")),
+#                          sample_prior = "only")
 
 
 
@@ -181,7 +216,7 @@ post_emerge_mg %>%
             median = median(mg_dm),
             sd = sd(mg_dm),
             low95 = quantile(mg_dm, probs = 0.025),
-            high95 = quantile(mg_dm, probs = 0.975))
+            high95 = quantile(mg_dm, probs = 0.975)) 
 
 
 #summary of cumulative emergence after experiment began
@@ -204,6 +239,53 @@ sum_emerge <- post_emerge_mg %>%
 write.csv(sum_emerge, file = "sum_emerge.csv")  
 
 
+
+#cumulative difference
+post_emerge_mg %>% 
+  mutate(date = mdy(date),
+         trt2 = str_replace_all(trt2,c("ctrl" = "no fish",
+                                       "exc" = "fish"))) %>% 
+  pivot_wider(names_from = date, 
+              values_from = mg_dm) %>% 
+  clean_names() %>% 
+  mutate(tot_emerge = x2017_06_06 + x2017_06_12 + x2017_06_16 + x2017_06_23) %>% 
+  select(iter, trt2, tot_emerge) %>% 
+  group_by(trt2) %>% 
+  pivot_wider(names_from = trt2, values_from = tot_emerge) %>% 
+  clean_names() %>% 
+  mutate(prop_reduce = 1 - no_fish/fish,
+         diff = fish - no_fish) %>% 
+  summarize(mean = mean(prop_reduce),
+            median = median(prop_reduce),
+            sd = sd(prop_reduce),
+            low95 = quantile(prop_reduce, probs = 0.025),
+            high95 = quantile(prop_reduce, probs = 0.975),
+            mean_diff = mean(diff),
+            median_diff = median(diff),
+            sd_diff = sd(diff),
+            low95_diff = quantile(diff, probs = 0.025),
+            high95_diff = quantile(diff, probs = 0.975))
+
+#how much more emergence over 28 days
+post_emerge_mg %>% 
+  mutate(date = mdy(date),
+         trt2 = str_replace_all(trt2,c("ctrl" = "no fish",
+                                       "exc" = "fish"))) %>% 
+  pivot_wider(names_from = date, 
+              values_from = mg_dm) %>% 
+  clean_names() %>% 
+  mutate(tot_emerge = x2017_06_06 + x2017_06_12 + x2017_06_16 + x2017_06_23) %>% 
+  select(iter, trt2, tot_emerge) %>% 
+  group_by(trt2) %>%
+  pivot_wider(names_from = trt2, values_from = tot_emerge) %>% 
+  clean_names() %>% 
+  mutate(daily_diff = fish - no_fish,
+         diff_28d = daily_diff*28) %>% 
+  summarize(mean = mean(diff_28d),
+            median = median(diff_28d),
+            sd = sd(diff_28d),
+            low95 = quantile(diff_28d, probs = 0.025),
+            high95 = quantile(diff_28d, probs = 0.975))
 
 # Fish in cages -----------------------------------------------------------
 

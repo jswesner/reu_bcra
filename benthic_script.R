@@ -8,7 +8,7 @@ library(janitor)
 
 
 # Load data ---------------------------------------------------------------
-#benthic abundance
+#benthic abundance (insects only)
 ben <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/benthic62617.csv")) %>% 
   clean_names() %>% 
   mutate(chironomidae = chiro_larvae + pupae) %>% 
@@ -34,8 +34,8 @@ brm_ben_m2 <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/brm_
 #                 cores = 4)
 
 #check model
-brm_ind_mg
-pp_check(brm_ind_mg, type = "boxplot")
+# brm_ind_mg
+# pp_check(brm_ind_mg, type = "boxplot")
 
 #saveRDS(brm_ind_mg, file = "benthic_ind_mg.RDS")
 
@@ -66,11 +66,39 @@ ben_clean <- ben %>%
   select(-notes,-total,-daphnia,-isopodia,-hemiptera,-copepod,-snails,-oligochaetes) %>%
     gather(taxon,abundance,"ceratopogonidae":"chironomidae")
 
+#plot ambient vs cage
+plot_ben_cage_v_amb <- ben_clean %>% 
+  mutate(date = mdy(date)) %>% 
+  filter(trt2 != "Exclusion",
+         date != "2017-06-02") %>% 
+  ggplot(aes(x = reorder(taxon, -abundance), y = abundance, color = trt2, shape = trt2))+
+  geom_point(size = 2,position = position_jitterdodge(dodge.width = 0.6,
+                                                      jitter.width = 0),
+             alpha = .8)+
+  theme_bw()+
+  facet_grid(date~., scales = "free")+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.3, size = 10))+
+  scale_y_log10() +
+  scale_color_grey(start = 0.2, end = 0.7)+
+  theme(legend.title = element_blank())+
+  xlab("prey_taxon")+
+  ylab("Number per benthic sample")+
+  #coord_flip() +
+  NULL
+
+
+ggsave(plot_ben_cage_v_amb, file = "plot_ben_cage_v_amb.tiff", dpi = 600, width = 6.5, height =4.5)
+
+
+
 #make data to analyze - total benthic mg
 ben_dm_tot <- merge(ben_clean,ind_mg_mean) %>% 
   mutate(sample_m2 = 0.76*0.3,
          benthic_mg_dm_m2 = (abundance*mean_mgdm)/sample_m2,
          benthic_mg01 = 0.01 + benthic_mg_dm_m2) 
+
+
+
 
 # Bayesian model ----------------------------------------------------------
 
@@ -154,8 +182,8 @@ saveRDS(plot_benthic, file = "plot_benthic.rds")
 #summary stats by date and treatment
 tot_benthic <- total_mg %>%
   ungroup() %>% 
-  mutate(trt = str_replace_all(trt,c("ctrl" = "no fish",
-                                     "exc" = "fish"))) %>% 
+  mutate(trt = str_replace_all(trt,c("ctrl" = "fish",
+                                     "exc" = "no_fish"))) %>% 
   group_by(date, trt) %>% 
   summarize(mean = mean(mg_dm),
             median = median(mg_dm),
