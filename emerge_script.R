@@ -11,7 +11,9 @@ library(janitor)
 # Load data ---------------------------------------------------------------
 
 #full emergence abundance
-emerge_reu <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/emerge_reu.csv"))
+emerge_reu_mg_long <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/emerge_reu_mg_long.csv"))
+emerge_reu_mg <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/emerge_reu_mg.csv"))
+
 #chiro_individual_lengths
 chiro_ind <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/ind_ins.csv"))
 #Bayesian model of chiro individual mass
@@ -116,6 +118,13 @@ emerge_reu_mg <- emerge_reu %>%
 emerge_reu_mg$id <- paste(emerge_reu_mg$stat,emerge_reu_mg$loc)
 
 
+emerge_reu_mg_long <- emerge_reu_mg %>% 
+  select(date,id, trt2, days, area, 
+         chiro_mg_dm, doli_mg_dm, 
+         tric_mg_dm, odo_mg_dm, ephem_mg_dm) %>% 
+  mutate(trt3 = ifelse(date == "05/28/17", "ctrl", trt2)) %>% 
+  gather(taxon, mg_dm, c(-date, -id, -trt2, -days, -area))
+
 
 # Bayesian model mg emergence ---------------------------------------------
 
@@ -129,56 +138,62 @@ emerge_reu_mg$id <- paste(emerge_reu_mg$stat,emerge_reu_mg$loc)
 
 
 #full model
-#emerge_dm_model <- brm(tot_mg_dm_m2_d ~ date*trt2 + (1|id) + (1|loc),data=emerge_reu_mg,family=Gamma(link="log"),
-#prior=c(prior(normal(1,2),class="Intercept"),
-#prior(normal(0,4),class="b"),
-#prior(cauchy(0,1),class = "sd")),
-#cores=4)
+# emerge_dm_model_taxon <- brm(mg_dm_m2_d01 ~ date*trt3*taxon + (1|id),data=emerge_reu_mg_long,
+#                              family=Gamma(link="log"),
+#                              prior=c(prior(normal(1,2),class="Intercept"),
+#                                      prior(normal(0,4),class="b"),
+#                                      prior(cauchy(0,1),class = "sd")),
+#                              cores=4)
 
-#check model
-emerge_dm_model
-pp_check(emerge_dm_model, type = "boxplot")
+# saveRDS(emerge_dm_model_taxon, file = "emerge_dm_model.rds")
 
-#save model
-#saveRDS(emerge_dm_model, file = "emerge_dm_model.RDS")
-
-# Extract conditional posteriors ------------------------------------------
+emerge_dm_model_taxon
+pp_check(emerge_dm_model_taxon, type = "boxplot")
 
 #make data to condition on
-date <- unique(emerge_reu_mg$date)
-trt2 <- unique(emerge_reu_mg$trt2)
-newdata <- expand.grid(date, trt2) %>% 
+date <- unique(emerge_reu_mg_long$date)
+trt3 <- unique(emerge_reu_mg_long$trt3)
+taxon <- unique(emerge_reu_mg_long$taxon)
+newdata <- expand.grid(date, trt2, taxon) %>% 
   rename(date = Var1,
-         trt2 = Var2)
+         trt3 = Var2,
+         taxon = Var3)
 
 #extract posterior on each date an treatment
-emerge_fit <- fitted(emerge_dm_model, newdata = newdata, summary=F, 
+emerge_fit <- fitted(emerge_dm_model_taxon, newdata = newdata, summary=F, 
                      re_formula = NA)
 
-names <- newdata %>% unite(colnames,c(date, trt2)) #names for the columns of the fitted estimates below
+names <- newdata %>% unite(colnames,c(date, trt3, taxon)) #names for the columns of the fitted estimates below
 colnames(emerge_fit) <- names$colnames
 
-post_emerge_mg <- as_tibble(emerge_fit) %>% 
+post_emerge_mg_taxon <- as_tibble(emerge_fit) %>% 
   mutate(iter = 1:nrow(emerge_fit)) %>% 
   gather(key, mg_dm, -iter) %>% 
-  separate(key, c("date","trt2"), sep = "_")
+  separate(key, c("date","trt3","taxon"), sep = "_") 
 
+post_emerge_mg_total <- post_emerge_mg_taxon %>% 
+  group_by(date, trt3, iter) %>% 
+  summarize(mg_dm = sum(mg_dm))
+
+post_emerge_mg_chiro <- post_emerge_mg_taxon %>% 
+  group_by(date, trt3, iter) %>% 
+  filter(taxon == "chiro")
 
 # Plot posteriors ---------------------------------------------------------
 raw_data_plot <- emerge_reu_mg %>% 
   mutate(mg_dm = tot_mg_dm_m2_d,
-         date = mdy(date),
-         trt2 = str_replace_all(trt2,c("ctrl" = "fish",
+         trt3 = if_else(date == "2017-05-28", "ctrl", as.character(trt2)),
+         trt3 = str_replace_all(trt3,c("ctrl" = "fish",
                                       "exc" = "no fish")))
 
-plot_emerge <- post_emerge_mg %>% 
+plot_emerge <- post_emerge_mg_total %>% ungroup() %>% 
   mutate(date = mdy(date),
-         trt2 = str_replace_all(trt2,c("ctrl" = "fish",
+         trt3 = str_replace_all(trt3,c("ctrl" = "fish",
                                   "exc" = "no fish"))) %>%
-  ggplot(aes(x = date, y = mg_dm, fill = trt2)) +
-  geom_boxplot(aes(group = interaction(trt2, date)), outlier.shape = NA,
+  ggplot(aes(x = date, y = mg_dm, fill = trt3)) +
+  geom_boxplot(aes(group = interaction(trt3, date)), outlier.shape = NA,
                position = position_dodge(width = 2),
-               width = 1.5)+
+               width = 1.5) +
   theme_classic()+
   scale_fill_grey(start = 0.9, end = 0.4)+
   theme(legend.title = element_blank(),
@@ -187,7 +202,7 @@ plot_emerge <- post_emerge_mg %>%
   coord_cartesian(ylim = c(0,2000),
                   xlim = as.Date(c('2017-05-28', '2017-06-29'), 
                                  format="%Y-%m-%d")) +
-  geom_point(data = raw_data_plot, aes(y = tot_mg_dm_m2_d,fill = trt2), 
+  geom_point(data = raw_data_plot, aes(y = tot_mg_dm_m2_d,fill = trt3), 
              position = position_dodge(width = 2),
              shape = 16, size = 1.3) +
   annotate("text",x=as.Date("2017-06-02")+7.5,y=1500,label="start of experiment")+
@@ -197,7 +212,7 @@ plot_emerge <- post_emerge_mg %>%
   #annotate("text",x=as.Date("2017-06-02")+7.5,y=320,label="start of experiment")+
   #geom_segment(aes(x = as.Date("2017-06-05"), y = 320, xend=as.Date("2017-06-02"), yend = 320))+
   #scale_y_log10()+
-  ggtitle("a) Emerging insects")
+  ggtitle("a) Emerging insects (>99% chironmids)")
 
 
 ggsave(plot_emerge, file = "plot_emerge.tiff", dpi = 600, width = 7, height = 3.5, units = "in")
@@ -286,6 +301,22 @@ post_emerge_mg %>%
             sd = sd(diff_28d),
             low95 = quantile(diff_28d, probs = 0.025),
             high95 = quantile(diff_28d, probs = 0.975))
+
+#proportion_chiros
+post_emerge_mg_chiro %>% 
+  mutate(mg_dm_chiro = mg_dm) %>% 
+  select(-mg_dm, -taxon) %>% 
+  left_join(post_emerge_mg_total) %>% 
+  mutate(prop_chiro = mg_dm_chiro/mg_dm) %>% 
+  group_by(date,trt3) %>% 
+  summarize(mean = mean(prop_chiro),
+            median = median(prop_chiro),
+            sd = sd(prop_chiro),
+            low95 = quantile(prop_chiro, probs = 0.025),
+            high95 = quantile(prop_chiro, probs = 0.975))
+
+
+
 
 # Fish in cages -----------------------------------------------------------
 
