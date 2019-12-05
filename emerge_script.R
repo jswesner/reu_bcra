@@ -212,7 +212,7 @@ plot_emerge <- post_emerge_mg_total %>% ungroup() %>%
   #annotate("text",x=as.Date("2017-06-02")+7.5,y=320,label="start of experiment")+
   #geom_segment(aes(x = as.Date("2017-06-05"), y = 320, xend=as.Date("2017-06-02"), yend = 320))+
   #scale_y_log10()+
-  ggtitle("a) Emerging insects (>99% chironmids)")
+  ggtitle("a) Emerging insects (>99% chironomids)")
 
 
 ggsave(plot_emerge, file = "plot_emerge.tiff", dpi = 600, width = 7, height = 3.5, units = "in")
