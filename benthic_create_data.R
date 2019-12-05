@@ -23,10 +23,6 @@ ben_dm_ind <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner
 #Bayesian brms model of length-weight regression
 brm_ind_mg <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/benthic_ind_mg.RDS?raw=true"))
 
-#Bayesian brms model of benthic dry mass
-brm_ben_m2 <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/brm_ben_m2.RDS?raw=true"))
-
-
 #Bayesian model of benthic individual dry mass
 #brm_ind_mg <- brm(mg_dm_per_ind ~ 0 + taxon + (1|experiment), data = ben_dm_ind,
 #                  family = Gamma(link = "log"),

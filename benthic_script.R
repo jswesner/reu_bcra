@@ -9,110 +9,43 @@ library(janitor)
 
 # Load data ---------------------------------------------------------------
 #benthic abundance (insects only)
-ben <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/benthic62617.csv")) %>% 
-  clean_names() %>% 
-  mutate(chironomidae = chiro_larvae + pupae) %>% 
-  select(-chiro_larvae, -pupae)
-
-#benthic dry mass of individuals
-ben_dm_ind <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/benthic_drymass_141517.csv")) %>% 
-  filter(mg_dm_per_ind > 0) %>% 
-  mutate(taxon = str_replace(taxon, "Baetidae", "ephemeroptera"),
-         taxon = str_replace(taxon, "Caenidae", "ephemeroptera"))
-
-#Bayesian brms model of length-weight regression
-brm_ind_mg <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/benthic_ind_mg.RDS?raw=true"))
-
-#Bayesian brms model of benthic dry mass
-brm_ben_m2 <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/brm_ben_m2.RDS?raw=true"))
+ben_dm_tot <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/ben_dm_tot.csv")) 
 
 
-#Bayesian model of benthic individual dry mass
-#brm_ind_mg <- brm(mg_dm_per_ind ~ 0 + taxon + (1|experiment), data = ben_dm_ind,
-#                  family = Gamma(link = "log"),
-#                  prior = c(prior(normal(0,1), class = "b")),
-#                 cores = 4)
-
-#check model
-# brm_ind_mg
-# pp_check(brm_ind_mg, type = "boxplot")
-
-#saveRDS(brm_ind_mg, file = "benthic_ind_mg.RDS")
-
-#extract posterior and estimate mean
-ind_mg_post <- posterior_samples(brm_ind_mg) %>% 
-  select(starts_with('b')) %>% 
-  gather()
-
-ind_mg_mean <- ind_mg_post %>% 
-  group_by(key) %>% 
-  summarize(mean_mgdm = mean(exp(value))) %>% 
-  mutate(taxon = tolower(str_remove(key, "b_taxon"))) %>% 
-  select(-key) %>% 
-  add_row(taxon="tipulidae",mean_mgdm=1.4) %>% 
-  mutate(taxon = ifelse(taxon == "worms", "olgigochaetes", taxon))
-#replace Caenidae with Ephem. #most mayflies are Caenids anyway at this 
-#site, so this allows easer matching of names later on.
-#Tipulidae were not measured for length. Instead, the mean of tipulid 
-#lengths and regression to mass from Benke et al. (1999) was used to 
-#estimate Tipulid length. Thus, there is no variation around this estimate
-#(or at least it's very small - but non-zero to allow the gamma parameters
-#to be fit).
-
-
-#Convert abundance to biomass. First, clean benthic data to include only benthic organisms that emerged, and remove previous summaries. Then gather by taxon and add the dry mass data
-
-ben_clean <- ben %>%
-  select(-notes,-total,-daphnia,-isopodia,-hemiptera,-copepod,-snails,-oligochaetes) %>%
-    gather(taxon,abundance,"ceratopogonidae":"chironomidae")
-
-#plot ambient vs cage
-plot_ben_cage_v_amb <- ben_clean %>% 
-  mutate(date = mdy(date)) %>% 
-  filter(trt2 != "Exclusion",
-         date != "2017-06-02") %>% 
-  ggplot(aes(x = reorder(taxon, -abundance), y = abundance, color = trt2, shape = trt2))+
-  geom_point(size = 2,position = position_jitterdodge(dodge.width = 0.6,
-                                                      jitter.width = 0),
-             alpha = .8)+
-  theme_bw()+
-  facet_grid(date~., scales = "free")+
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.3, size = 10))+
-  scale_y_log10() +
-  scale_color_grey(start = 0.2, end = 0.7)+
-  theme(legend.title = element_blank())+
-  xlab("prey_taxon")+
-  ylab("Number per benthic sample")+
-  #coord_flip() +
-  NULL
-
-
-ggsave(plot_ben_cage_v_amb, file = "plot_ben_cage_v_amb.tiff", dpi = 600, width = 6.5, height =4.5)
-
-
-
-#make data to analyze - total benthic mg
-ben_dm_tot <- merge(ben_clean,ind_mg_mean) %>% 
-  mutate(sample_m2 = 0.76*0.3,
-         benthic_mg_dm_m2 = (abundance*mean_mgdm)/sample_m2,
-         benthic_mg01 = 0.01 + benthic_mg_dm_m2) 
 
 
 
 
 # Bayesian model ----------------------------------------------------------
 
+#prior predictive - model based on priors only
+# brm_ben_m2_prior <- brm(benthic_mg01~date*trt*taxon + (1|location), data=ben_dm_tot,family=Gamma(link="log"),
+# prior=c(prior(normal(0,3),class="Intercept"),
+# prior(normal(0,2),class="b"),
+# prior(cauchy(0,1),class = "sd")), sample_prior = "only")
+# 
+# View prior predictive
+# marginal_effects(brm_ben_m2_prior)
 
-#brm_ben_m2 <- brm(benthic_mg01~date*trt*taxon + (1|location), data=ben_dm_tot,family=Gamma(link="log"),
-#prior=c(prior(normal(0,2),class="Intercept"), 
-#prior(normal(0,1),class="b"),
-#prior(cauchy(0,1),class = "sd")))
+#full model
+# brm_ben_m2 <- brm(benthic_mg01~date*trt*taxon + (1|location), data=ben_dm_tot,family=Gamma(link="log"),
+# prior=c(prior(normal(0,3),class="Intercept"),
+# prior(normal(0,2),class="b"),
+# prior(cauchy(0,1),class = "sd")))
 
-#check model
+#Bayesian brms model of benthic dry mass - download here or re-run using code above.
+brm_ben_m2 <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/brm_ben_m2.RDS?raw=true"))
+
+#check model and posterior predictive distributions (pp_check)
 brm_ben_m2
 pp_check(brm_ben_m2, type = "boxplot")
 
-#saveRDS(brm_ben_m2, file = "brm_ben_m2.RDS")
+# saveRDS(brm_ben_m2, file = "brm_ben_m2.RDS")
+
+
+
+
+
 
 # Extract conditional posteriors ------------------------------------------
 
@@ -134,12 +67,30 @@ marg_post2 <- marg_post %>% as_tibble(marg_post)%>%
   separate(key, c("date","trt","taxon"), sep = "_") %>% 
   mutate(date = mdy(as.factor(date)))
 
+#total mg summed across all prey taxa
 total_mg <- marg_post2 %>% 
   group_by(iter, date, trt) %>% 
   summarize(mg_dm = sum(mg_dm_m2))
 
+#total mg chiro only
+total_chiro <- marg_post2 %>%
+  filter(taxon == "chironomidae") %>% 
+  mutate(mg_dm = mg_dm_m2)
+
+
+
+
+
+
+
+
+
+
 
 # Plot posterior ----------------------------------------------------------
+# TOTAL MACROINVERT BIOMASS
+
+# format raw data to plot on top of posterior
 raw_ben_plot <- as_tibble(ben_dm_tot) %>% 
   mutate(date = mdy(as.factor(date)),
          trt = str_replace_all(trt,c("ctrl" = "fish",
@@ -148,6 +99,18 @@ raw_ben_plot <- as_tibble(ben_dm_tot) %>%
   summarize(mg_dm = sum(benthic_mg_dm_m2))
 
 
+
+raw_chiro_plot <- as_tibble(ben_dm_tot) %>% 
+  filter(taxon == "chironomidae") %>% 
+  mutate(date = mdy(as.factor(date)),
+         trt = str_replace_all(trt,c("ctrl" = "fish",
+                                     "exc" = "no fish"))) %>% 
+  group_by(date, id, location, trt) %>% 
+  summarize(mg_dm = sum(benthic_mg_dm_m2))
+
+
+
+#plot of raw data and posterior
 plot_benthic <- total_mg %>%
   ungroup() %>% 
   mutate(trt = str_replace_all(trt,c("ctrl" = "fish",
@@ -171,16 +134,54 @@ plot_benthic <- total_mg %>%
   ylab(bquote('mg dry mass/'~m^2)) +
   geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
   #scale_y_log10()+
-  ggtitle("b) Benthic insects")
+  ggtitle("b) Benthic invertebrates (84-91% chironomids)")
 
-
+plot_benthic
 ggsave(plot_benthic, file = "plot_benthic.tiff", dpi = 600, width = 7, height = 3.5, units = "in")
 saveRDS(plot_benthic, file = "plot_benthic.rds")
 
 
+# TOTAL CHIRONOMID BIOMASS
+#plot of raw data dn posterior
+plot_benthic_chiro <- total_chiro %>%
+  ungroup() %>% 
+  mutate(trt = str_replace_all(trt,c("ctrl" = "fish",
+                                     "exc" = "no fish"))) %>%
+  ggplot(aes(x = date, y = mg_dm_m2, fill = trt)) +
+  geom_boxplot(aes(group = interaction(trt, date)), outlier.shape = NA,
+               position = position_dodge(width = 2),
+               width = 1.5)+
+  theme_classic()+
+  scale_fill_grey(start = 0.9, end = 0.4)+
+  coord_cartesian(xlim = as.Date(c('2017-05-28', '2017-06-29'), 
+                                 format="%Y-%m-%d")) +
+  scale_y_continuous(limits = c(0, 4800),
+                     breaks = c(0,1000, 2000, 3000, 4000, 5000)) +
+  theme(legend.title = element_blank(),
+        axis.title.x =element_blank(),
+        text = element_text(size = 20))+
+  geom_point(data = raw_chiro_plot, aes(y = mg_dm, x = date, fill = trt), 
+             position = position_dodge(width = 2),
+             shape = 16, size = 1.3) +
+  ylab(bquote('mg dry mass/'~m^2)) +
+  geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
+  #scale_y_log10()+
+  ggtitle("b) Larval chironomids")
+
+plot_benthic_chiro
+ggsave(plot_benthic_chiro, file = "plot_benthic_chiro.tiff", dpi = 600, width = 7, height = 3.5, units = "in")
+saveRDS(plot_benthic_chiro, file = "plot_benthic_chiro.rds")
+
+
+
+
+
+
 # Summarize posterior -----------------------------------------------------
+
+# TOTAL MACROINVERT BIOMASS
 #summary stats by date and treatment
-tot_benthic <- total_mg %>%
+total_mg %>%
   ungroup() %>% 
   mutate(trt = str_replace_all(trt,c("ctrl" = "fish",
                                      "exc" = "no_fish"))) %>% 
@@ -191,10 +192,6 @@ tot_benthic <- total_mg %>%
             low95 = quantile(mg_dm, probs = 0.025),
             high95 = quantile(mg_dm, probs = 0.975))
 
-
-write.csv(tot_benthic, file = "tot_benthic.csv")
-
-
 #proportion difference by trt
 total_mg %>%
   ungroup() %>% 
@@ -204,7 +201,7 @@ total_mg %>%
   pivot_wider(names_from = trt,
               values_from = mg_dm) %>% 
   clean_names() %>% 
-  mutate(prop_reduction = 1- fish/no_fish) %>% 
+  mutate(prop_reduction = fish/no_fish) %>% 
   summarize(mean = mean(prop_reduction),
             median = median(prop_reduction),
             sd = sd(prop_reduction),
@@ -222,6 +219,66 @@ total_mg %>%
   clean_names() %>% 
   mutate(diff = fish-no_fish) %>% 
   summarize(prob_nofish_higher = sum(diff<0)/4000)
+
+
+#proportion of benthics that are chironomids
+total_chiro %>% mutate(chiro_mg = mg_dm) %>% 
+  select(-mg_dm, -mg_dm_m2) %>% 
+  left_join(total_mg) %>% 
+  mutate(prop_chiro = chiro_mg/mg_dm) %>% 
+  group_by(trt, date) %>% 
+  summarize(mean = mean(prop_chiro),
+            median = median(prop_chiro),
+            sd = sd(prop_chiro),
+            low95 = quantile(prop_chiro, probs = 0.025),
+            high95 = quantile(prop_chiro, probs = 0.975))
+
+
+
+---------------------------------------------------------------------------
+# TOTAL CHIRONOMID BIOMASS
+
+total_chiro %>%
+  mutate(trt = str_replace_all(trt,c("ctrl" = "fish",
+                                     "exc" = "no_fish")),
+         mg_dm = mg_dm_m2) %>% 
+  select(trt, iter, mg_dm) %>% 
+  group_by(trt) %>% 
+  summarize(mean = mean(mg_dm),
+            median = median(mg_dm),
+            sd = sd(mg_dm),
+            low95 = quantile(mg_dm, probs = 0.025),
+            high95 = quantile(mg_dm, probs = 0.975))
+
+#proportion difference by trt
+total_chiro %>%
+  ungroup() %>% 
+  mutate(trt = str_replace_all(trt,c("ctrl" = "fish",
+                                     "exc" = "no fish"))) %>% 
+  group_by(date, trt) %>% 
+  pivot_wider(names_from = trt,
+              values_from = mg_dm) %>% 
+  clean_names() %>% 
+  mutate(prop_reduction = fish/no_fish) %>% 
+  summarize(mean = mean(prop_reduction),
+            median = median(prop_reduction),
+            sd = sd(prop_reduction),
+            low95 = quantile(prop_reduction, probs = 0.025),
+            high95 = quantile(prop_reduction, probs = 0.975))
+
+#probability of a difference
+total_chiro %>%
+  ungroup() %>% 
+  mutate(trt = str_replace_all(trt,c("ctrl" = "fish",
+                                     "exc" = "no fish"))) %>% 
+  group_by(date, trt) %>% 
+  select(-mg_dm_m2) %>% 
+  pivot_wider(names_from = trt,
+              values_from = mg_dm) %>% 
+  clean_names() %>% 
+  mutate(diff = fish-no_fish) %>% 
+  summarize(prob_nofish_higher = sum(diff<0)/4000)
+
 
 
 
