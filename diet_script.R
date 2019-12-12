@@ -40,7 +40,7 @@ d %>%
 plot_diet_method <- d %>% 
   #filter(number > 1) %>% 
   #filter(grepl("chiro",prey_taxon)) %>% 
-  ggplot(aes(x = reorder(prey_taxon, -number), y = number + 0.1, color = method,
+  ggplot(aes(x = reorder(prey_taxon, -mg_diet_dm), y = mg_diet_dm + 0.1, color = method,
              shape = method)) + 
   geom_point(size = 2,position = position_jitterdodge(dodge.width = 0.6,
                                                       jitter.width = 0),
@@ -56,8 +56,6 @@ plot_diet_method <- d %>%
   NULL
 
 ggsave(plot_diet_method, file = "plot_diet_method.tiff", dpi = 600, width = 6.5, height = 7)
-
-priors <- get_prior(mgdm01 ~ prey_taxon*date2*species, family = Gamma(link = "log"),data =d)
 
 # Bayesian model ----------------------------------------------------------
 
