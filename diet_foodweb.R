@@ -9,7 +9,8 @@ library(viridis)
 #raw diet data
 diet_mgdm <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/diet_mgdm.csv"))
 #posterior of diet proportions
-diet_brms <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/diet_post_proportion.rds?raw=true"))
+diet_brms <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/diet_post_proportion.rds?raw=true")) %>% 
+  mutate(aggregation = ifelse(grepl("no_stage", aggregation), "a) no_stage_structure", "b) stage_structure"))
 
 
 # Load functions ----------------------------------------------------------
@@ -204,36 +205,3 @@ edges_sim <- edges %>%
 
 
 
-
-
-
-
-
-
-#ignore this ---- trying to show uncertainty in a differen way
-edges_sim %>% 
-  arrange(consumer) %>% 
-  ggplot() +
-  geom_label_repel(data = labels, aes(x = x, y = y, label = label),
-                   nudge_y = -.2, size = 6) +
-  geom_segment(aes(x = x1, xend = xend1, y = y, yend = yend),alpha = 0.1)+
-  facet_grid(aggregation ~ date, scales = "free")+
-  geom_point(data = nodes, aes(x = x, y = y, fill = color),
-             size=8, shape = 21) +
-  #theme_classic() +
-  theme(panel.background = element_rect(color = "black", fill = "white"),
-        axis.line = element_line(color = "black"),
-        panel.grid = element_blank(),
-        axis.text.x = element_blank(),
-        axis.title.x = element_blank(),
-        axis.ticks.x = element_blank(), 
-        text = element_text(size = 25)) +
-  scale_fill_brewer(type = "qual", palette = 4, direction = 1)+
-  scale_color_grey(start = 0.2, end = 0.8)+
-  scale_y_continuous(breaks = c(0.5,1,1.5,2), labels = c("1","2","3","4"))+
-  coord_cartesian(ylim = c(0.4,2.1)) +
-  guides(size = guide_legend("Proportion of diet"),
-         fill = guide_legend(""),
-         color = F,
-         alpha = F)+
-  ylab("Trophic position")

@@ -51,7 +51,7 @@ plot_diet_method <- d %>%
   scale_color_grey(start = 0.2, end = 0.7)+
   facet_grid(species ~ .) +
   xlab("prey_taxon")+
-  ylab("Number per stomach")+
+  ylab("Dry mass per stomach (mg)")+
   #coord_flip() +
   NULL
 
