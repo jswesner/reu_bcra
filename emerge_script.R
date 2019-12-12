@@ -113,7 +113,8 @@ posts_prior <- posterior_samples(emerge_dm_model_taxon) %>%
   mutate(prior = ifelse(grepl("Intercept", par), rnorm(4000, 0,4), b_prior)) %>% 
   gather(model, value, -par) %>% 
   ungroup() %>% 
-  mutate(par = fct_relevel(as.factor(par), "b_Intercept", after = Inf))
+  mutate(par = fct_relevel(as.factor(par), "b_Intercept", after = Inf),
+         model = fct_relevel(as.factor(model), "prior"))
 
 plot_emerge_post_prior <- ggplot(posts_prior, aes(x = value, y = par, fill = model)) +
   geom_density_ridges(quantile_lines = T, quantiles = 2) +
@@ -122,7 +123,7 @@ plot_emerge_post_prior <- ggplot(posts_prior, aes(x = value, y = par, fill = mod
         axis.line.x = element_blank(),
         axis.text.y = element_text(size = 8)) +
   geom_vline(xintercept = 0) +
-  scale_fill_brewer(type = "qual", palette = 4) +
+  scale_fill_grey(start = 0.05, end = 0.9, breaks = c("prior","posterior")) +
   ylab("Parameter") +
   xlab("Parameter value") +
   ggtitle("Emergence model prior versus posterior")

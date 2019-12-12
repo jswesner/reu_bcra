@@ -1,5 +1,6 @@
 library(tidyverse)
 library(lubridate)
+library(viridis)
 library(brms)
 library(ggridges)
 library(RCurl)
@@ -224,7 +225,8 @@ posts_prior_ben <- posterior_samples(brm_ben_m2) %>%
   mutate(prior = ifelse(grepl("Intercept", par), rnorm(4000, 0,3), b_prior_ben)) %>% 
   gather(model, value, -par) %>% 
   ungroup() %>% 
-  mutate(par = fct_relevel(as.factor(par), "b_Intercept", after = Inf))
+  mutate(par = fct_relevel(as.factor(par), "b_Intercept", after = Inf),
+         model = fct_relevel(as.factor(model), "prior"))
 
 plot_benthic_post_prior <- ggplot(posts_prior_ben, aes(x = value, y = par, fill = model)) +
   geom_density_ridges(quantile_lines = T, quantiles = 2) +
@@ -233,7 +235,7 @@ plot_benthic_post_prior <- ggplot(posts_prior_ben, aes(x = value, y = par, fill 
         axis.line.x = element_blank(),
         axis.text.y = element_text(size = 8)) +
   geom_vline(xintercept = 0) +
-  scale_fill_brewer(type = "qual", palette = 4) +
+  scale_fill_grey(start = 0.05, end = 0.9, breaks = c("prior","posterior")) +
   ylab("Parameter") +
   xlab("Parameter value") +
   ggtitle("Benthic model prior versus posterior")
