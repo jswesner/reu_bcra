@@ -18,8 +18,8 @@ emerge_reu_mg <- read.csv(text = getURL("https://raw.githubusercontent.com/jswes
 chiro_ind <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/ind_ins.csv"))
 #Bayesian model of chiro individual mass
 chiro_mg_dm <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/emerge_chiro_mg_dm.RDS?raw=true"))
-#Bayesian model of emergence (or re-run it below)
-emerge_dm_model <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/emerge_dm_model.RDS?raw=true"))
+#Bayesian model of emergence
+emerge_dm_model_taxon <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/emerge_dm_model.RDS?raw=true"))
 
 
 # plot to check for cage-control vs ambient differences
@@ -219,6 +219,34 @@ ggsave(plot_emerge, file = "plot_emerge.tiff", dpi = 600, width = 7, height = 3.
 saveRDS(plot_emerge, file = "plot_emerge.rds")
 
 
+
+#posterior versus prior 
+b_prior = rnorm(4000, 1,2) #vector of priors from model
+
+posts_prior <- posterior_samples(emerge_dm_model_taxon) %>% 
+  select(contains("b_")) %>% 
+  gather(par, posterior) %>% 
+  group_by(par) %>% 
+  mutate(prior = ifelse(grepl("Intercept", par), rnorm(4000, 0,4), b_prior)) %>% 
+  gather(model, value, -par) %>% 
+  ungroup() %>% 
+  mutate(par = fct_relevel(as.factor(par), "b_Intercept", after = Inf))
+
+plot_emerge_post_prior <- ggplot(posts_prior, aes(x = value, y = par, fill = model)) +
+  geom_density_ridges(quantile_lines = T, quantiles = 2) +
+  theme_minimal() +
+  theme(legend.title = element_blank(),
+        axis.line.x = element_blank(),
+        axis.text.y = element_text(size = 8)) +
+  geom_vline(xintercept = 0) +
+  scale_fill_brewer(type = "qual", palette = 4) +
+  ylab("Parameter") +
+  xlab("Parameter value")
+
+ggsave(plot_emerge_post_prior, file = "plot_emerge_post_prior.tiff", dpi = 600, width = 6.5, height = 7)
+
+
+
 # Summarize posteriors ----------------------------------------------------
 
 #summary of each date and treatment
@@ -332,7 +360,8 @@ fish_in_cages_select <- fish_in_cages %>%  select(fish_in_cages, station)
 
 
 #plot it
-emerge_plot_fishcage <- raw_data_plot %>% 
+emerge_plot_fishcage <- as_tibble(raw_data_plot) %>% 
+  mutate(date = mdy(date)) %>% 
   unite("station", c("stat","loc")) %>%
   left_join(fish_in_cages_select) %>% 
   mutate(fish_in_cages = ifelse(date == "2017-05-28",0,fish_in_cages),
@@ -346,7 +375,7 @@ emerge_plot_fishcage <- raw_data_plot %>%
   scale_size_continuous(name = "# fish in cages on 2017-06-30")+
   theme_classic()+
   theme(axis.title.x =element_blank())+
-  coord_cartesian(xlim = as.Date(c('2017-05-28', '2017-06-29'), 
+  coord_cartesian(xlim = as.Date(c('2017-05-28', '2017-06-29'),
                                  format="%Y-%m-%d")) +
   ylab(bquote('mg dry mass/'~m^2/d)) +
   geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
