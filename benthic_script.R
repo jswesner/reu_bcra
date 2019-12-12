@@ -12,6 +12,9 @@ library(janitor)
 ben_dm_tot <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner/reu_bcra/master/ben_dm_tot.csv")) 
 
 
+#Bayesian brms model of benthic dry mass - download here or re-run using code below.
+brm_ben_m2 <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/brm_ben_m2.RDS?raw=true"))
+
 
 
 
@@ -32,9 +35,6 @@ ben_dm_tot <- read.csv(text = getURL("https://raw.githubusercontent.com/jswesner
 # prior=c(prior(normal(0,3),class="Intercept"),
 # prior(normal(0,2),class="b"),
 # prior(cauchy(0,1),class = "sd")))
-
-#Bayesian brms model of benthic dry mass - download here or re-run using code above.
-brm_ben_m2 <- readRDS(url("https://github.com/jswesner/reu_bcra/blob/master/brm_ben_m2.RDS?raw=true"))
 
 #check model and posterior predictive distributions (pp_check)
 brm_ben_m2
@@ -70,12 +70,14 @@ marg_post2 <- marg_post %>% as_tibble(marg_post)%>%
 #total mg summed across all prey taxa
 total_mg <- marg_post2 %>% 
   group_by(iter, date, trt) %>% 
-  summarize(mg_dm = sum(mg_dm_m2))
+  summarize(mg_dm = sum(mg_dm_m2)) %>% 
+  mutate(group = "All insects")
 
 #total mg chiro only
 total_chiro <- marg_post2 %>%
   filter(taxon == "chironomidae") %>% 
-  mutate(mg_dm = mg_dm_m2)
+  mutate(mg_dm = mg_dm_m2) %>% 
+  mutate(group = "Chironomidae")
 
 
 
@@ -172,6 +174,72 @@ plot_benthic_chiro
 ggsave(plot_benthic_chiro, file = "plot_benthic_chiro.tiff", dpi = 600, width = 7, height = 3.5, units = "in")
 saveRDS(plot_benthic_chiro, file = "plot_benthic_chiro.rds")
 
+
+
+# COMPARISON OF TOTAL EMERGENCE AND CHIRONOMID ONLY
+
+plot_emerge_all_v_chiro <- total_chiro %>% 
+  select(-taxon, -mg_dm_m2) %>% 
+  bind_rows(total_mg) %>% 
+  ungroup() %>% 
+  mutate(trt = str_replace_all(trt,c("ctrl" = "fish",
+                                     "exc" = "no fish"))) %>%
+  ggplot(aes(x = date, y = mg_dm, fill = trt)) +
+  geom_boxplot(aes(group = interaction(trt, group, date)), outlier.shape = NA,
+               position = position_dodge(width = 2),
+               width = 1.5) +
+  theme_bw() +
+  theme(panel.grid = element_blank()) +
+  facet_wrap(~ group) +
+  scale_fill_grey(start = 0.9, end = 0.4) +
+  coord_cartesian(xlim = as.Date(c('2017-05-28', '2017-06-29'), 
+                                 format="%Y-%m-%d")) +
+  scale_y_continuous(limits = c(0, 4800),
+                     breaks = c(0,1000, 2000, 3000, 4000, 5000)) +
+  theme(legend.title = element_blank(),
+        axis.title.x =element_blank(),
+        text = element_text(size = 10)) +
+  # geom_point(data = raw_chiro_plot, aes(y = mg_dm, x = date, fill = trt), 
+  #            position = position_dodge(width = 2),
+  #            shape = 16, size = 1.3) +
+  ylab(bquote('mg dry mass/'~m^2)) +
+  geom_vline(xintercept=as.Date("2017-06-02"),linetype=2) +
+  #scale_y_log10()+
+  NULL
+
+plot_emerge_all_v_chiro
+ggsave(plot_emerge_all_v_chiro, file = "plot_emerge_all_v_chiro.tiff", dpi = 600, width = 7, height = 3, units = "in")
+saveRDS(plot_emerge_all_v_chiro, file = "plot_emerge_all_v_chiro.rds")
+
+
+
+
+#posterior versus prior 
+b_prior_ben = rnorm(4000, 0,2) #vector of priors from model
+
+posts_prior_ben <- posterior_samples(brm_ben_m2) %>% 
+  select(contains("b_")) %>% 
+  gather(par, posterior) %>% 
+  group_by(par) %>% 
+  mutate(prior = ifelse(grepl("Intercept", par), rnorm(4000, 0,3), b_prior_ben)) %>% 
+  gather(model, value, -par) %>% 
+  ungroup() %>% 
+  mutate(par = fct_relevel(as.factor(par), "b_Intercept", after = Inf))
+
+plot_benthic_post_prior <- ggplot(posts_prior_ben, aes(x = value, y = par, fill = model)) +
+  geom_density_ridges(quantile_lines = T, quantiles = 2) +
+  theme_minimal() +
+  theme(legend.title = element_blank(),
+        axis.line.x = element_blank(),
+        axis.text.y = element_text(size = 8)) +
+  geom_vline(xintercept = 0) +
+  scale_fill_brewer(type = "qual", palette = 4) +
+  ylab("Parameter") +
+  xlab("Parameter value") +
+  ggtitle("Benthic model prior versus posterior")
+
+ggsave(plot_benthic_post_prior, file = "plot_benthic_post_prior.tiff", dpi = 600, width = 6.5, height = 7)
+saveRDS(plot_benthic_post_prior, file = "plot_benthic_post_prior.rds")
 
 
 
