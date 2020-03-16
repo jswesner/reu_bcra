@@ -272,6 +272,10 @@ total_mg %>%
               values_from = mg_dm) %>% 
   clean_names() %>% 
   mutate(prop_reduction = fish/no_fish) %>% 
+  # ggplot(aes(x = date, y = prop_reduction)) +
+  # geom_point(position = position_jitter(width = 0.2), alpha = 0.2) +
+  # geom_hline(yintercept = 1)+
+  # scale_y_log10()
   summarize(mean = mean(prop_reduction),
             median = median(prop_reduction),
             sd = sd(prop_reduction),

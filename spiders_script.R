@@ -48,11 +48,21 @@ spider_abund2 <- as_tibble(spider_abund) %>%
 
 #Bayesian model
 spider_abund2$spid01 <- 0.01+spider_abund2$spid
-#m2<-brm(spid~trt*date + (1|loc),data=spider_abund2,family=poisson(link="log"),
- #       prior=c(prior(normal(0,1),class="b"),
-  #              prior(normal(0,1),class="Intercept"),
-   #             prior(cauchy(0,1), class = "sd")),
-    #    iter = 2000, chains = 4, cores=4)
+
+# m2_pp <- brm(spid~trt*date + (1|loc),data=spider_abund2,family=poisson(link="log"),
+#           prior=c(prior(normal(0,2),class="b"),
+#                  prior(normal(0,3),class="Intercept"),
+#                 prior(cauchy(0,1), class = "sd")),
+#        iter = 2000, chains = 4, cores=4, sample_prior = "only")
+# 
+# marginal_effects(m2_pp)
+
+
+# m2<-brm(spid~trt*date + (1|loc),data=spider_abund2,family=poisson(link="log"),
+#       prior=c(prior(normal(0,2),class="b"),
+#              prior(normal(0,3),class="Intercept"),
+#             prior(cauchy(0,1), class = "sd")),
+#    iter = 2000, chains = 4, cores=4)
 
 #check model
 m2
@@ -62,7 +72,7 @@ pp_check(m2, type = "boxplot")
 
 # Extract conditional posteriors ------------------------------------------
 
-marg_spiders <-marginal_effects(m2,method="fitted",effects="date:trt")
+marg_spiders <- marginal_effects(m2,method="fitted",effects="date:trt")
 marg_spiders_fit <- fitted(m2, newdata=marg_spiders$`date:trt`,summary=F)
 columns_spiders<- paste(marg_spiders$`date:trt`$date,"_",marg_spiders$`date:trt`$trt)
 colnames(marg_spiders_fit) <- columns_spiders
@@ -96,9 +106,11 @@ plot_spider <- marg_spiders_fit_plot %>%
         axis.title.x =element_blank(),
         text = element_text(size = 20))+
   coord_cartesian(xlim = as.Date(c('2017-05-28', '2017-06-29'), 
-                                 format="%Y-%m-%d")) +
+                                 format="%Y-%m-%d"),
+                  ylim = c(0,5)) +
   geom_point(data = raw_spider_plot, aes(fill = trt), 
-             position = position_dodge(width = 2),
+             position = position_jitterdodge(dodge.width = 2,
+                                             jitter.width = 0.3),
              shape = 16, size = 1.3) +
   ylab(expression(paste("Spider abundance (#/cage)")))+
   geom_vline(xintercept=as.Date("2017-06-02"),linetype=2)+
@@ -116,6 +128,37 @@ saveRDS(plot_spider, file = "plot_spider.rds")
 
 #mean spiders
 tot_spiders <- marg_spiders_fit_plot %>% 
+  group_by(trt,iter) %>% 
+  summarize(spider_abundance = sum(spider_abundance)) %>% 
+  summarize(mean = mean(spider_abundance),
+            median = median(spider_abundance),
+            sd = sd(spider_abundance),
+            low95 = quantile(spider_abundance,probs=0.025),
+            high95 = quantile(spider_abundance,probs=0.975)) %>% 
+  mutate_if(is.numeric,round,1) 
+
+
+marg_spiders_fit_plot %>% 
+  group_by(trt,iter) %>% 
+  summarize(spider_abundance = sum(spider_abundance)) %>%
+  pivot_wider(names_from = trt, values_from = spider_abundance) %>% 
+  mutate(diff = exc-ctrl) %>% 
+  summarize(mean = mean(diff),
+            median = median(diff),
+            sd = sd(diff),
+            low95 = quantile(diff,probs=0.025),
+            high95 = quantile(diff,probs=0.975)) 
+
+marg_spiders_fit_plot %>% 
+  group_by(trt,iter) %>% 
+  summarize(spider_abundance = sum(spider_abundance)) %>%
+  pivot_wider(names_from = trt, values_from = spider_abundance) %>% 
+  mutate(diff = exc-ctrl) %>% 
+  summarize(prob_diff = sum(diff>0)/4000)
+
+
+
+tot_spiders_date <- marg_spiders_fit_plot %>% 
   group_by(date,trt) %>% 
   summarize(mean = mean(spider_abundance),
             median = median(spider_abundance),
@@ -125,11 +168,11 @@ tot_spiders <- marg_spiders_fit_plot %>%
   mutate_if(is.numeric,round,1) 
 write.csv(tot_spiders, file = "tot_spiders.csv")
 
-#differences in treatments
+#proportion reduction due to fish 
 marg_spiders_fit_plot %>% 
   group_by(date,trt) %>% 
   spread(trt,spider_abundance) %>% 
-  mutate(diff = exc-ctrl) %>% 
+  mutate(diff = ctrl/exc) %>% 
   summarize(low95 = quantile(diff,probs=0.025),
             median = median(diff),
             high95 = quantile(diff,probs=0.975)) %>% 
@@ -152,3 +195,4 @@ ggplot(spider_emerge,aes(x=tot_mg_dm_m2_d,y=spid))+
   geom_smooth(method="lm")+
   facet_wrap(~spider_emerge_date.x)
 
+View(raw_spider_plot)

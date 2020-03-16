@@ -37,7 +37,7 @@ pp_check(emerge_dm_model_taxon, type = "boxplot")
 date <- unique(emerge_reu_mg_long$date)
 trt3 <- unique(emerge_reu_mg_long$trt3)
 taxon <- unique(emerge_reu_mg_long$taxon)
-newdata <- expand.grid(date, trt2, taxon) %>% 
+newdata <- expand.grid(date, trt3, taxon) %>% 
   rename(date = Var1,
          trt3 = Var2,
          taxon = Var3)
@@ -135,11 +135,12 @@ saveRDS(plot_emerge_post_prior, file = "plot_emerge_post_prior.rds")
 # Summarize posteriors ----------------------------------------------------
 
 #summary of each date and treatment
-post_emerge_mg %>% 
+post_emerge_mg_total %>% 
+  ungroup() %>% 
   mutate(date = mdy(date),
-         trt2 = str_replace_all(trt2,c("ctrl" = "no fish",
+         trt3 = str_replace_all(trt3,c("ctrl" = "no fish",
                                        "exc" = "fish"))) %>% 
-  group_by(date, trt2) %>% 
+  group_by(date, trt3) %>% 
   summarize(mean = mean(mg_dm),
             median = median(mg_dm),
             sd = sd(mg_dm),
@@ -148,16 +149,17 @@ post_emerge_mg %>%
 
 
 #summary of cumulative emergence after experiment began
-sum_emerge <- post_emerge_mg %>% 
+sum_emerge <- post_emerge_mg_total %>% 
+  ungroup() %>% 
   mutate(date = mdy(date),
-         trt2 = str_replace_all(trt2,c("ctrl" = "no fish",
+         trt3 = str_replace_all(trt3,c("ctrl" = "no fish",
                                        "exc" = "fish"))) %>% 
   pivot_wider(names_from = date, 
               values_from = mg_dm) %>% 
   clean_names() %>% 
   mutate(tot_emerge = x2017_06_06 + x2017_06_12 + x2017_06_16 + x2017_06_23) %>% 
-  select(iter, trt2, tot_emerge) %>% 
-  group_by(trt2) %>% 
+  select(iter, trt3, tot_emerge) %>% 
+  group_by(trt3) %>% 
   summarize(mean = mean(tot_emerge),
             median = median(tot_emerge),
             sd = sd(tot_emerge),
@@ -169,17 +171,18 @@ write.csv(sum_emerge, file = "sum_emerge.csv")
 
 
 #cumulative difference
-post_emerge_mg %>% 
+post_emerge_mg_total %>% 
+  ungroup() %>% 
   mutate(date = mdy(date),
-         trt2 = str_replace_all(trt2,c("ctrl" = "no fish",
+         trt3 = str_replace_all(trt3,c("ctrl" = "no fish",
                                        "exc" = "fish"))) %>% 
   pivot_wider(names_from = date, 
               values_from = mg_dm) %>% 
   clean_names() %>% 
   mutate(tot_emerge = x2017_06_06 + x2017_06_12 + x2017_06_16 + x2017_06_23) %>% 
-  select(iter, trt2, tot_emerge) %>% 
-  group_by(trt2) %>% 
-  pivot_wider(names_from = trt2, values_from = tot_emerge) %>% 
+  select(iter, trt3, tot_emerge) %>% 
+  group_by(trt3) %>% 
+  pivot_wider(names_from = trt3, values_from = tot_emerge) %>% 
   clean_names() %>% 
   mutate(prop_reduce = 1 - no_fish/fish,
          diff = fish - no_fish) %>% 

@@ -129,6 +129,7 @@ nodes <- edges %>%
   separate(value, c("taxon", "x","y"), sep = "_") %>% 
   separate(key, c("trophic","delete")) %>%
   select(-delete) %>% 
+  drop_na() %>% 
   mutate(x = as.numeric(x),
          y = as.numeric(y),
          color = ifelse(grepl("chir", taxon),"chironomid","non-chironomid"))
@@ -193,6 +194,19 @@ edges_sim <- edges %>%
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+#ignore this ---- trying to show uncertainty in a differen way
 edges_sim %>% 
   arrange(consumer) %>% 
   ggplot() +
