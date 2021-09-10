@@ -1,0 +1,25 @@
+"data_level","species","name","median","mean","sd","lower","upper"
+"Per capita","All Species","prop_pa",0.16,0.17,0.04,0.09,0.26
+"Per capita","All Species","total",39.69,47.01,47.79,21.93,103.54
+"Per capita","Bluegill","prop_pa",0.12,0.13,0.06,0.04,0.27
+"Per capita","Bluegill","total",49.45,55.03,25.08,25.96,112.37
+"Per capita","Largemouth Bass","prop_pa",0.03,0.04,0.03,0.01,0.13
+"Per capita","Largemouth Bass","total",84.86,108.48,82.98,34.02,323.99
+"Per capita","River Shiner","prop_pa",0.11,0.13,0.1,0.02,0.39
+"Per capita","River Shiner","total",3.51,15.53,168.14,1.02,70.15
+"Per capita","Spotfin Shiner","prop_pa",0.36,0.37,0.1,0.19,0.57
+"Per capita","Spotfin Shiner","total",7.48,9.02,5.68,4.09,26.37
+"Per population","All Species","prop_pa",0.16,0.17,0.04,0.09,0.26
+"Per population","All Species","total",294.95,375.21,1098.39,180.69,746.04
+"Per population","Bluegill","prop_pa",0.12,0.13,0.06,0.04,0.27
+"Per population","Bluegill","total",368.97,408.07,170.52,191.98,802.92
+"Per population","Largemouth Bass","prop_pa",0.03,0.04,0.03,0.01,0.13
+"Per population","Largemouth Bass","total",280.92,351.42,255.75,118.08,1006.4
+"Per population","River Shiner","prop_pa",0.11,0.13,0.1,0.02,0.39
+"Per population","River Shiner","total",55.36,367.32,4370.75,13.13,1746.75
+"Per population","Spotfin Shiner","prop_pa",0.36,0.37,0.1,0.19,0.57
+"Per population","Spotfin Shiner","total",340.07,374.01,143.56,195.06,712.23
+"Per community","All Species","prop_pa",0.24,0.24,0.06,0.12,0.36
+"Per community","All Species","total",1179.8,1500.82,4393.56,722.77,2984.16
+"Per community","Community","prop_pa",0.24,0.24,0.06,0.12,0.36
+"Per community","Community","total",1179.8,1500.82,4393.56,722.77,2984.16

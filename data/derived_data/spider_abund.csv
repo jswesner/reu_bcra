@@ -1,0 +1,25 @@
+date,stat,stat2,loc,trt,treatment,spid,spid01
+2017-06-21,2,2,Above,ctrl,fish,0,0.01
+2017-06-29,2,2,Above,ctrl,fish,0,0.01
+2017-06-21,8,8,Above,ctrl,fish,0,0.01
+2017-06-29,8,8,Above,ctrl,fish,0,0.01
+2017-06-21,9,19,Below,ctrl,fish,3,3.01
+2017-06-29,9,19,Below,ctrl,fish,0,0.01
+2017-06-21,1,1,Above,exc,no fish,2,2.01
+2017-06-29,1,1,Above,exc,no fish,1,1.01
+2017-06-21,3,3,Above,exc,no fish,1,1.01
+2017-06-29,3,3,Above,exc,no fish,2,2.01
+2017-06-21,5,5,Above,exc,no fish,1,1.01
+2017-06-29,5,5,Above,exc,no fish,0,0.01
+2017-06-21,6,6,Above,exc,no fish,1,1.01
+2017-06-29,6,6,Above,exc,no fish,1,1.01
+2017-06-21,9,9,Above,exc,no fish,2,2.01
+2017-06-29,9,9,Above,exc,no fish,2,2.01
+2017-06-21,2,12,Below,exc,no fish,2,2.01
+2017-06-29,2,12,Below,exc,no fish,1,1.01
+2017-06-21,3,13,Below,exc,no fish,0,0.01
+2017-06-29,3,13,Below,exc,no fish,0,0.01
+2017-06-21,5,15,Below,exc,no fish,0,0.01
+2017-06-29,5,15,Below,exc,no fish,1,1.01
+2017-06-21,7,17,Below,exc,no fish,4,4.01
+2017-06-29,7,17,Below,exc,no fish,0,0.01

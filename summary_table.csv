@@ -1,8 +1,0 @@
-"Table X. Summary statistics of cumulative emergence, benthic biomass, and spider densities. Means and standard deviations summarize the Bayesian posterior distribution of each response variable. Cumulative emergence is derived by summing emergence over all sample dates acros each iteration of the HMC sample for each sample date.",,,,
-,,,mean (sd),
-Response,Units,Dates,Fish,No fish
-emergence,mgDM/m2,cumulative,1971 (920),253 (114)
-benthic,mgDM/m2,6/2/2017,68 (125),26 (29)
-benthic,mgDM/m2,6/26/2017,2313 (2513),666 (510)
-spiders,#/cage,6/21/2017,0.8 (0.4),1.4 (0.4)
-spiders,#/cage,6/29/2017,0.4 (0.3),0.9 (0.3)

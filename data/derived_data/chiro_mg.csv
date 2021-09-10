@@ -1,0 +1,402 @@
+...1,mm,date,cage,location,taxon,trt,trt2,a,b,param_source,param_taxon,mg_dm
+1,2.744,6/12/2017,1,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.48782387092690116
+2,1.606,6/12/2017,1,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2103877743264139
+3,1.74,6/12/2017,1,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2385955391975217
+4,3.009,6/12/2017,1,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5637970962205812
+5,1.67,6/12/2017,1,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.22369942083809635
+6,5.249,6/12/2017,1,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3505797047018282
+7,1.461,6/12/2017,1,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.18134301792471136
+8,4.502,6/12/2017,8,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.061320664689683
+9,5.241,6/12/2017,8,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3473493920391488
+10,1.814,6/12/2017,8,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2547185265738735
+11,3.975,6/12/2017,8,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8728895591079804
+12,1.314,6/12/2017,8,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.15353052089981378
+13,1.73,6/12/2017,8,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.23644622351186115
+14,2.596,6/12/2017,8,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.4471552770171299
+15,1.474,6/12/2017,8,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.18388277500265196
+16,4.454,6/12/2017,8,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0436090436646674
+17,2.957,6/12/2017,8,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5485757171155881
+18,4.471,6/12/2017,8,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0498695304045487
+19,1.241,6/12/2017,6,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.14035299902375065
+20,4.801,6/12/2017,6,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1740613149153238
+21,1.692,6/12/2017,6,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.22834345248096743
+22,1.486,6/12/2017,6,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.18623852817513184
+23,4.832,6/12/2017,6,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1859852102256496
+24,4.674,6/12/2017,6,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1256704657685848
+25,4.516,6/12/2017,6,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0665069138730763
+26,3.705,6/12/2017,6,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7816232931947614
+27,2.178,6/12/2017,6,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.33943050042114353
+28,2.337,6/12/2017,6,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.37913526199236947
+29,4.274,6/12/2017,8,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.97816066170627
+30,6.851,6/12/2017,8,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.0517938748877103
+31,5.292,6/12/2017,8,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3679906900014538
+32,6.178,6/12/2017,8,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.7443402786603344
+33,3.525,6/12/2017,8,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7228360774420193
+34,3.115,6/12/2017,8,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5952907579467512
+35,5.858,6/12/2017,8,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.6045989612869744
+36,6.294,6/12/2017,8,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.7960357605016393
+37,2.577,6/12/2017,8,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.4420278542292625
+38,2.915,6/12/2017,8,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5363923036112305
+39,2.702,6/12/2017,10,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.47615241476404535
+40,6.197,6/12/2017,10,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.752770071117324
+41,3.9,6/12/2017,10,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8471716871539817
+42,7.228,6/12/2017,10,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.231816509628739
+43,2.294,6/12/2017,10,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.3682405913384492
+44,2.981,6/12/2017,10,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5555821734046887
+45,5.143,6/12/2017,10,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3080066235137489
+46,2.508,6/12/2017,10,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.423588562958975
+47,5.702,6/12/2017,10,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.538022625672974
+48,1.685,6/12/2017,10,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.22686204946929994
+49,4.872,6/12/2017,10,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.201435413363109
+50,2.92,6/12/2017,10,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5378374965688828
+51,1.68,6/12/2017,10,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.22580604924820374
+52,5.144,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3084059399039125
+53,2.753,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.49033822645620745
+54,5.098,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2900832450700745
+55,1.883,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2700940408978653
+56,1.427,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.17476144935037652
+57,4.998,6/12/2017,4,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2505760734281914
+58,4.562,6/12/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.083611963270969
+59,2.978,6/12/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5547046016538371
+60,1.9,6/12/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2739322429431994
+61,2.172,6/12/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.33796359319495084
+62,2.119,6/12/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.32510646212812944
+63,2.826,6/12/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5109051580434217
+64,1.411,6/12/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.1716949065077628
+65,1.661,6/12/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2218095919844983
+66,5.085,6/12/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2849221120529657
+67,2.437,6/12/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.4049143617093191
+68,7.409,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.320184727841843
+69,4.482,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0539276730295968
+70,2.805,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5049572348268432
+71,4.49,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0568826180768165
+72,2.386,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.3916900953981605
+73,3.056,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5776845589488975
+74,5.28,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.363123667477433
+75,7.932,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.582443613604656
+76,4.873,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2018225980792265
+77,5.57,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.4824930171460478
+78,2.744,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.48782387092690116
+79,1.922,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2789284489482961
+80,1.901,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.27415863143140906
+81,5.202,6/12/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3316418828326424
+82,4.17,6/12/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9410519659254547
+83,4.804,6/12/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1752133277252919
+84,5.168,6/12/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3180027998299932
+85,3.458,6/12/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7013829956622769
+86,3.776,6/12/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.805267584904502
+87,4.597,6/12/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0966927460507185
+88,5.375,6/12/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.4018262743566379
+89,5.042,6/12/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2679042596647665
+90,3.692,6/12/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7773218166901735
+91,2.864,6/12/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5217321883409279
+92,6.58,6/12/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.9258153898251855
+93,1.477,6/12/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.18447069230372704
+94,2.354,6/12/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.3834741909566924
+95,5.938,6/12/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.639136432924888
+96,3.097,6/12/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5898990440884917
+97,3.035,6/12/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5714643619347203
+98,4.326,6/12/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9969097160170742
+99,2.973,6/12/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5532431016583785
+100,4.364,6/12/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0106925042942163
+101,5.298,6/12/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3704265621895775
+102,4.98,6/12/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2435122506145186
+103,6.674,6/12/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.9691841779764852
+104,4.716,6/12/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1415918520022463
+105,5.158,6/12/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3140010139542808
+106,5.437,6/12/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.4272963422194573
+107,2.928,6/12/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5401527402422559
+108,5.373,6/12/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.4010074338565466
+109,2.527,6/12/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.42863756567003924
+110,4.501,6/12/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0609505696305017
+111,1.904,6/12/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2748382041806442
+112,1.949,6/12/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2851048382719812
+113,1.924,6/12/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.27938427362780666
+114,5.675,6/12/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.5266040471908733
+115,4.476,6/12/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.051713436045631
+116,10.58,6/12/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,4.059219145823806
+117,3.371,6/12/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6738779429073536
+118,2.784,6/12/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.4990346397452854
+119,5.986,6/12/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.6599868154084019
+120,5.174,6/12/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3204059913527277
+121,2.441,6/12/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.405958289256689
+122,2.879,6/12/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5260286685752525
+123,4.321,6/12/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9951013103268047
+124,3.436,6/12/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6943899931525219
+125,6.892,6/12/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.0711047846837545
+126,3.226,6/12/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6289310700452276
+127,4.877,6/12/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2033717898243184
+128,5.485,6/12/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.4471292178167765
+129,5.984,6/12/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.6591161401253356
+130,2.704,6/12/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.47670586922423014
+131,2.856,6/12/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5194459671621944
+132,3.619,6/12/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7533279405278218
+133,5.116,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2972418210919394
+134,4.564,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0843579007258561
+135,4.896,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2107403390822926
+136,2.702,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.47615241476404535
+137,5.721,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.5460764250601338
+138,3.738,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.79258107168107494
+139,5.656,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.5185872849702742
+140,3.871,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8373024827511202
+141,4.322,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9954628960937435
+142,5.587,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.4896029168097638
+143,5.184,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.324414841340625
+144,6.916,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.0824391781981246
+145,4.717,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1419719214504223
+146,1.682,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.22622823467540354
+147,5.35,6/12/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3916032609898243
+148,3.533,6/12/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7254132948839415
+149,2.843,6/12/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5157386388369564
+150,2.282,6/12/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.3652208432993666
+151,3.665,6/12/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.76841555378388815
+152,5.739,6/12/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.5537204174896724
+153,5.933,6/12/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.6369700245798802
+154,3.109,6/12/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5934915413372357
+155,3.272,6/12/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6430679617296226
+156,2.624,6/12/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.4547505303244627
+157,4.895,6/12/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2103521136577762
+158,4.953,6/12/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2329437826285319
+159,1.677,6/12/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2251733081266951
+160,6.531,6/12/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.9033475766987191
+161,4.704,6/12/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1370346027040228
+162,6.237,6/12/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.7705651761023375
+163,3.363,6/12/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6713688416347681
+164,2.686,6/12/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.47173318984588164
+165,6.525,6/12/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.900602998671403
+166,3.668,6/12/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7694032977084171
+167,4.478,6/12/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.05245132717759
+168,3.568,6/12/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7367277147378587
+169,4.919,6/12/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.219681991147345
+170,5.968,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.6521567106387902
+171,10.953,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,4.286145873753147
+172,5.443,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.4297700151137005
+173,6.249,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.7759164241572156
+174,6.039,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.6831200615227102
+175,6.678,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.9710374277217946
+176,5.905,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.6248573754166273
+177,4.952,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2325529870799021
+178,4.977,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2423363596397976
+179,4.738,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1499639832968482
+180,4.016,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8870663713975905
+181,5.642,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.5126900089070034
+182,2.208,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.346799560498217
+183,1.865,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.26605153732277576
+184,3.356,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6691761668565135
+185,5.006,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2537202109241516
+186,4.059,6/12/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9020236213085338
+187,4.351,6/12/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0059696093981565
+188,4.753,6/12/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1556849786427135
+189,3.499,6/12/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7144831477398672
+190,4.229,6/12/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9620400798253521
+191,3.126,6/12/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5985944538819833
+192,4.313,6/12/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9922103416119168
+193,1.981,5/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2924883864101154
+194,4.318,5/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9940168392152562
+195,2.626,5/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.45529482407881083
+196,3.683,5/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7743489229129681
+197,1.254,5/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.1426681836986544
+198,1.976,5/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2913301927600238
+199,1.388,5/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.16732138924480944
+200,6.055,5/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.6901265011817028
+201,1.637,5/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.21679857668954539
+202,1.965,5/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2887880451183801
+203,1.967,5/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2892496519697422
+204,2.65,5/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.46184476160994614
+205,7.685,5/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.457315266450268
+206,8.337,5/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.792449888890361
+207,6.891,5/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.0706330058029336
+208,3.378,5/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6760761927454838
+209,5.706,5/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.5397168931184237
+210,5.134,5/23/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3044147678713855
+211,1.147,5/23/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.12402652225400895
+212,7.327,5/23/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.2799961870880368
+213,6.668,5/23/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.9664054902974213
+214,2.565,5/23/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.4388005568483947
+215,2.365,5/23/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.3862912738781494
+216,2.609,5/23/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.4506758683446157
+217,4.131,5/23/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9272709540740283
+218,6.404,5/23/2017,4,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.8455617364755725
+219,1.797,5/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2509807894724252
+220,2.47,5/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.4135558957575522
+221,5.562,5/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.4791514572091955
+222,9.528,5/23/2017,1,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,3.4437589517300817
+223,6.475,5/23/2017,1,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.8777874977863716
+224,2.537,5/23/2017,1,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.43130365006560006
+225,3.162,5/23/2017,1,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6094528734308319
+226,5.957,5/23/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.6473782665816803
+227,3.27,5/23/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6424509441233616
+228,1.738,5/23/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.23816511130768167
+229,2.243,5/23/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.3554691858630521
+230,2.841,5/23/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5151691366871592
+231,4.539,5/23/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0750470874083378
+232,6.365,5/23/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.8279465833825441
+233,2.717,5/23/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.48030900864638504
+234,5.954,5/23/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.6460759268309908
+235,2.332,5/23/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.3778625206631438
+236,5.744,5/23/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.5558461769171925
+237,1.981,5/23/2017,3,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2924883864101154
+238,5.117,5/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.297639941325302
+239,5.784,5/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.57289019923738
+240,5.019,5/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2588355446761668
+241,5.491,5/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.4496153083283148
+242,3.651,5/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.763812176897655
+243,5.651,6/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.5164801586628913
+244,4.436,6/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0369951228500143
+245,5.485,6/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.4471292178167765
+246,4.514,6/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.065765459267176
+247,8.298,6/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.7719684688957127
+248,4.478,6/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.05245132717759
+249,2.025,6/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.30275218992937925
+250,6.053,6/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.6892501184228506
+251,3.766,6/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8019219399986549
+252,6.913,6/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.081021151030576
+253,4.639,6/23/2017,1,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.112464765909614
+254,5.168,6/23/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3180027998299932
+255,3.613,6/23/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7513680081339622
+256,5.076,6/23/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.281353422021951
+257,5.149,6/23/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.310403185533559
+258,3.893,6/23/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8447856222874512
+259,4.267,6/23/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9756466311354304
+260,5.191,6/23/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3272236606813048
+261,5.315,6/23/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3773367393907523
+262,4.581,6/23/2017,2,above,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0907058891999675
+263,4.131,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9272709540740283
+264,2.756,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.4911773874422369
+265,5.064,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.27660077664267
+266,6.242,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.7727941502614428
+267,6.27,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.7852952072999515
+268,4.843,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.190226776645331
+269,6.126,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.7213448248110526
+270,3.99,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8780665767588238
+271,6.675,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.9696474310747893
+272,5.668,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.5236487204094207
+273,4.394,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.021622108062412
+274,5.053,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2722498203907433
+275,6.289,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.7937962167641501
+276,4.823,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.182518928580751
+277,4.796,6/23/2017,2,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1721422052776889
+278,4.2,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9517028851914461
+279,2.653,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.4626658901200655
+280,6.153,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.733270943932827
+281,5.687,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.5316751569270435
+282,5.618,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.5025997897620123
+283,2.202,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.34532115432123506
+284,5.278,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3623131094806817
+285,2.418,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.3999690491265047
+286,1.721,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.23451788368752277
+287,4.643,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.113971124035118
+288,5.411,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.4165950772749758
+289,4.869,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2002741310070812
+290,4.779,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.165625763393315
+291,4.893,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.209575798425959
+292,5.176,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.321207408350199
+293,2.469,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.4132930585774912
+294,3.958,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8670357205122236
+295,5.283,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.36433983263691
+296,5.94,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.6400032874946455
+297,6.319,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.8072486871057405
+298,4.357,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0081484090462287
+299,4.659,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1200039527662662
+300,5.96,6/23/2017,6,below,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.6486809802321027
+301,5.748,6/23/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.557547544077929
+302,6.507,6/23/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.8923778958302888
+303,4.807,6/23/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1763657506711138
+304,3.583,6/23/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7415961881140607
+305,5.198,6/23/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3300346398177547
+306,5.341,6/23/2017,7,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3879296302572088
+307,5.146,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3092047054310976
+308,2.886,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5280380675501584
+309,5.651,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.5164801586628913
+310,5.686,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.531252331275208
+311,4.289,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9835557747339696
+312,4.677,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1268050138357142
+313,2.35,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.38245165426246175
+314,1.839,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.26025154409901957
+315,5.07,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.27897629785059
+316,1.984,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2931841030947191
+317,2.601,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.4485081642281958
+318,3.903,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8481950341591116
+319,4.296,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9860771794094261
+320,2.825,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5106213504706305
+321,2.823,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5100539071079246
+322,1.634,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.21617512658108368
+323,2.079,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.31552338192206725
+324,3.782,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8072773982237051
+325,5.279,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3627183665990583
+326,2.813,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.507220128221665
+327,3.411,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6864743261869896
+328,1.051,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.10812254613214956
+329,1.369,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.1637394825399597
+330,3.802,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8139899009026579
+331,4.234,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9638264498692305
+332,1.593,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2077202171856635
+333,1.871,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2673965787909337
+334,3.391,6/23/2017,9,below,chiro,Cage Control,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6801655477564452
+335,6.431,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.857792734278145
+336,4.172,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9417606726527622
+337,6.748,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.0035715952805018
+338,5.586,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.4891843456127973
+339,5.764,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.5643597606800848
+340,7.869,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,2.5503141830091516
+341,1.974,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.2908673825935025
+342,3.728,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7892546854459728
+343,4.906,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2146250786973485
+344,4.601,6/23/2017,5,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0981913186375145
+345,2.943,6/23/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5445035448914914
+346,4.746,6/23/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1530138981155549
+347,3.335,6/23/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6626137840318778
+348,5.51,6/23/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.4574981433388878
+349,6.113,6/23/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.7156132882115493
+350,2.203,6/23/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.3455673960912353
+351,4.963,6/23/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2368542111527339
+352,2.875,6/23/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5248816898658958
+353,3.892,6/23/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8444449553657368
+354,3.035,6/23/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5714643619347203
+355,3.307,6/23/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6539005249513404
+356,3.335,6/23/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6626137840318778
+357,2.439,6/23/2017,9,above,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.4054362034988428
+358,4.305,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9893224278138627
+359,3.317,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6570075953899014
+360,4.46,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0458170748158624
+361,4.998,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2505760734281914
+362,4.765,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1602691919972528
+363,4.288,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9831957654186447
+364,3.262,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6399850249601753
+365,3.155,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.607335966460393
+366,3.736,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7919153881501805
+367,4.115,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9216385841713992
+368,4.569,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.08622355954217
+369,4.743,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1518698363746347
+370,3.818,6/23/2017,5,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8193744184051357
+371,5.241,6/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.3473493920391488
+372,3.777,6/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8056024274700762
+373,6.546,6/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.9102153099924213
+374,3.306,6/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.6535901120861918
+375,1.116,6/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.1188044711786102
+376,4.078,6/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9086615215186822
+377,4.769,6/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1617987268490413
+378,4.956,6/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2341164391149917
+379,3.118,6/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5961911075298708
+380,2.024,6/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.30251749657805466
+381,2.956,6/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.5482844824649384
+382,2.834,6/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.513177678871004
+383,3.773,6/23/2017,3,below,chiro,Exclusion,exc,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8042633604816443
+384,4.031,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8922737017848862
+385,4.67,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1241583805919102
+386,5.026,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.261593086147986
+387,2.078,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.3152851405575475
+388,3.824,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8213969336477384
+389,4.099,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9160186833880328
+390,4.196,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.9502802490838435
+391,3.671,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.7703915022207367
+392,1.566,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.20221951275302544
+393,3.835,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8251095774401137
+394,3.924,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8553710115576157
+395,3.819,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8197113785569865
+396,5.115,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.2968437452127393
+397,4.337,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.0008924027801456
+398,3.91,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.8505845875604785
+399,4.812,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,1.1782873666948788
+400,1.549,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.19878367982969336
+401,2.463,6/23/2017,7,above,chiro,Ambient,ctrl,0.1,1.57,Sabo et al. 2002 (Table 2),Nematocera,0.41171730998553535
