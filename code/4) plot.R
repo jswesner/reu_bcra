@@ -77,6 +77,7 @@ ggsave(plot_emerge_cage_v_amb, file = "plots/plot_emerge_cage_v_amb.tiff", dpi =
 
 # Plot diet --------------------------
 prop_plot <- all_diet_posts %>% 
+  filter(.draw <= 300) %>% 
   ungroup() %>% 
   mutate(species = fct_relevel(species, "Community", "Spotfin Shiner", "Bluegill"),
          date = ymd(date2),
@@ -106,6 +107,7 @@ prop_plot <- all_diet_posts %>%
   theme(strip.text.x = element_text(hjust = -0.01))
 
 total_plot <- all_diet_posts %>% 
+  filter(.draw <= 300) %>% 
   ungroup() %>% 
   mutate(species = fct_relevel(species, "Community", "Spotfin Shiner", "Bluegill"),
          data_level = fct_relevel(data_level, "Per community", "Per population"),

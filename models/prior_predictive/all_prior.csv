@@ -1,0 +1,76 @@
+prior,class,coef,group,resp,dpar,nlpar,bound,source,model
+"normal(0, 2)",b,NA,,,,,,user,diet_brms.rds
+"normal(0, 2)",b,date22017M06M23,,,,,,default,diet_brms.rds
+"normal(0, 2)",b,date22017M06M23:prey_stagepa,,,,,,default,diet_brms.rds
+"normal(0, 2)",b,date22017M06M28,,,,,,default,diet_brms.rds
+"normal(0, 2)",b,date22017M06M28:prey_stagepa,,,,,,default,diet_brms.rds
+"normal(0, 2)",b,prey_stagepa,,,,,,default,diet_brms.rds
+"normal(0, 1)",b,NA,,,hu,,,user,diet_brms.rds
+"normal(0, 1)",b,prey_stagepa,,,hu,,,default,diet_brms.rds
+"normal(0, 1)",b,prey_stagepa:specieslargemouth,,,hu,,,default,diet_brms.rds
+"normal(0, 1)",b,prey_stagepa:speciesrivershiner,,,hu,,,default,diet_brms.rds
+"normal(0, 1)",b,prey_stagepa:speciesspotfin,,,hu,,,default,diet_brms.rds
+"normal(0, 1)",b,specieslargemouth,,,hu,,,default,diet_brms.rds
+"normal(0, 1)",b,speciesrivershiner,,,hu,,,default,diet_brms.rds
+"normal(0, 1)",b,speciesspotfin,,,hu,,,default,diet_brms.rds
+"normal(0, 2)",Intercept,NA,,,,,,user,diet_brms.rds
+"normal(0, 1)",Intercept,NA,,,hu,,,user,diet_brms.rds
+lkj_corr_cholesky(1),L,NA,,,,,,default,diet_brms.rds
+lkj_corr_cholesky(1),L,NA,species,,,,,default,diet_brms.rds
+exponential(2),sd,NA,,,,,,user,diet_brms.rds
+exponential(2),sd,NA,species,,,,,default,diet_brms.rds
+exponential(2),sd,date22017M06M23,species,,,,,default,diet_brms.rds
+exponential(2),sd,date22017M06M23:prey_stagepa,species,,,,,default,diet_brms.rds
+exponential(2),sd,date22017M06M28,species,,,,,default,diet_brms.rds
+exponential(2),sd,date22017M06M28:prey_stagepa,species,,,,,default,diet_brms.rds
+exponential(2),sd,Intercept,species,,,,,default,diet_brms.rds
+exponential(2),sd,prey_stagepa,species,,,,,default,diet_brms.rds
+"gamma(1, 0.1)",shape,NA,,,,,,user,diet_brms.rds
+"normal(0, 4)",b,NA,,,,,,user,emerge_dm_model.rds
+"normal(0, 4)",b,date06D06D17,,,,,,default,emerge_dm_model.rds
+"normal(0, 4)",b,date06D06D17:trt2exc,,,,,,default,emerge_dm_model.rds
+"normal(0, 4)",b,date06D12D17,,,,,,default,emerge_dm_model.rds
+"normal(0, 4)",b,date06D12D17:trt2exc,,,,,,default,emerge_dm_model.rds
+"normal(0, 4)",b,date06D16D17,,,,,,default,emerge_dm_model.rds
+"normal(0, 4)",b,date06D16D17:trt2exc,,,,,,default,emerge_dm_model.rds
+"normal(0, 4)",b,date06D23D17,,,,,,default,emerge_dm_model.rds
+"normal(0, 4)",b,date06D23D17:trt2exc,,,,,,default,emerge_dm_model.rds
+"normal(0, 4)",b,trt2exc,,,,,,default,emerge_dm_model.rds
+"normal(1, 2)",Intercept,NA,,,,,,user,emerge_dm_model.rds
+exponential(1),sd,NA,,,,,,user,emerge_dm_model.rds
+exponential(1),sd,NA,id,,,,,default,emerge_dm_model.rds
+exponential(1),sd,Intercept,id,,,,,default,emerge_dm_model.rds
+"gamma(2, 1)",shape,NA,,,,,,user,emerge_dm_model.rds
+"normal(0, 1)",b,NA,,,,,,user,brm_ben_m2.rds
+"normal(0, 1)",b,date6D26D2017,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,date6D26D2017:taxonchironomidae,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,date6D26D2017:taxoncorixidae,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,date6D26D2017:taxonephemeroptera,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,date6D26D2017:taxontipulidae,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,date6D26D2017:trtexc,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,date6D26D2017:trtexc:taxonchironomidae,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,date6D26D2017:trtexc:taxoncorixidae,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,date6D26D2017:trtexc:taxonephemeroptera,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,date6D26D2017:trtexc:taxontipulidae,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,taxonchironomidae,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,taxoncorixidae,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,taxonephemeroptera,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,taxontipulidae,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,trtexc,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,trtexc:taxonchironomidae,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,trtexc:taxoncorixidae,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,trtexc:taxonephemeroptera,,,,,,default,brm_ben_m2.rds
+"normal(0, 1)",b,trtexc:taxontipulidae,,,,,,default,brm_ben_m2.rds
+"normal(5, 3)",Intercept,NA,,,,,,user,brm_ben_m2.rds
+exponential(1),sd,NA,,,,,,user,brm_ben_m2.rds
+exponential(1),sd,NA,location,,,,,default,brm_ben_m2.rds
+exponential(1),sd,Intercept,location,,,,,default,brm_ben_m2.rds
+"gamma(1, 1)",shape,NA,,,,,,user,brm_ben_m2.rds
+"normal(0, 2)",b,NA,,,,,,user,spiders_brm.rds
+"normal(0, 2)",b,date2017M06M29,,,,,,default,spiders_brm.rds
+"normal(0, 2)",b,trtexc,,,,,,default,spiders_brm.rds
+"normal(0, 2)",b,trtexc:date2017M06M29,,,,,,default,spiders_brm.rds
+"normal(0, 3)",Intercept,NA,,,,,,user,spiders_brm.rds
+exponential(1),sd,NA,,,,,,user,spiders_brm.rds
+exponential(1),sd,NA,loc,,,,,default,spiders_brm.rds
+exponential(1),sd,Intercept,loc,,,,,default,spiders_brm.rds

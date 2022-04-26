@@ -10,7 +10,7 @@ fish_totals <- read_csv(file = "data/raw_data/fish_totals.csv")
 diet_brm_postpreds <- diet_brms$data %>%
   distinct(prey_stage, date2, species) %>% 
   add_epred_draws(diet_brms, dpar = T, re_formula = NULL) %>% 
-  filter(.draw <= 1000) %>% 
+  # filter(.draw <= 1000) %>% 
   left_join(fish_totals %>% mutate(date2 = as.factor(date2))) %>% 
   mutate(population_epred = .epred*total_abund) %>% 
   arrange(-.epred) 
@@ -39,7 +39,8 @@ diet_pop_postpreds_wide <- diet_brm_postpreds %>%
 diet_community <- diet_pop_postpreds_wide %>% 
   group_by(date2, .draw) %>% 
   summarize(pa = sum(pa),
-            total = sum(total)) %>% 
+            total = sum(total),
+            not_pa = sum(not_pa)) %>% 
   mutate(prop_pa = pa/total) %>% 
   mutate(data_level = "Per community",
          species = "Community")
@@ -93,3 +94,29 @@ spiders_cond_posts <- spider_abund %>%
 saveRDS(spiders_cond_posts, file = "posteriors/spiders_cond_posts.rds")
 
 
+
+# make prior table --------------------------------------------------------
+
+prior_diet_brms <- diet_brms$prior %>% as_tibble() %>% mutate(model = "diet_brms.rds") %>% 
+  mutate(prior = case_when(nchar(prior) != 0 ~ prior),
+         coef = case_when(nchar(coef) != 0 ~ coef)) %>% 
+  fill(prior)
+
+emerge_prior <- emerge_dm_model$prior %>% mutate(model = "emerge_dm_model.rds") %>% 
+  mutate(prior = case_when(nchar(prior) != 0 ~ prior),
+         coef = case_when(nchar(coef) != 0 ~ coef)) %>% 
+  fill(prior) 
+
+benthic_prior <- brm_ben_m2$prior %>% mutate(model = "brm_ben_m2.rds") %>% 
+  mutate(prior = case_when(nchar(prior) != 0 ~ prior),
+         coef = case_when(nchar(coef) != 0 ~ coef)) %>% 
+  fill(prior)
+
+spiders_prior <- spiders_brm$prior %>% mutate(model = "spiders_brm.rds") %>% 
+  mutate(prior = case_when(nchar(prior) != 0 ~ prior),
+         coef = case_when(nchar(coef) != 0 ~ coef)) %>% 
+  fill(prior)
+
+
+all_prior <- bind_rows(prior_diet_brms, emerge_prior, benthic_prior, spiders_prior)
+write_csv(all_prior, file = "models/prior_predictive/all_prior.csv")
