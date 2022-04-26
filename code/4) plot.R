@@ -2,7 +2,10 @@
 source("src/packages.R")
 
 #load posteriors
-all_diet_posts <- readRDS(file = "posteriors/all_diet_posts.rds")
+all_diet_posts <- readRDS(file = "posteriors/all_diet_posts.rds") %>% 
+  mutate(data_level_ordered = case_when(data_level == "Per community" ~ "a) Per Community",
+                                        data_level == "Per population" ~ "b) Per Population",
+                                        TRUE ~ "c) Per capita"))
 emerge_cond_posts <- readRDS(file = "posteriors/emerge_cond_posts.rds")
 benthic_cond_posts <- readRDS("posteriors/benthic_cond_posts.rds")
 spiders_cond_posts <- readRDS("posteriors/spiders_cond_posts.rds")
@@ -44,12 +47,42 @@ plot_diet_method <- d %>%
   #coord_flip() +
   NULL
 
-ggsave(plot_diet_method, file = "plot_diet_method.tiff", dpi = 600, width = 6.5, height = 7)
+ggsave(plot_diet_method, file = "plots/plot_diet_method.tiff", dpi = 600, width = 6.5, height = 7)
+
+
+# compare ambient versus emergence cages
+plot_emerge_cage_v_amb <- emerge_reu_mg %>% 
+  filter(trt != "Exclusion",
+         date != "2017-05-28") %>% 
+  select(date, trt, chir,cera,doli,ephe,tric, simu, coleo, odo, hem) %>% 
+  gather(taxon, abund, c(-date,-trt)) %>% 
+  ggplot(aes(x = reorder(taxon, -abund), y = abund, color = trt, shape = trt))+
+  geom_point(size = 2,position = position_jitterdodge(dodge.width = 0.6,
+                                                      jitter.width = 0),
+             alpha = .8)+
+  theme_bw()+
+  facet_grid(date~., scales = "free")+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.3, size = 10))+
+  scale_y_log10()+
+  scale_color_grey(start = 0.2, end = 0.7)+
+  xlab("prey_taxon")+
+  ylab("Number per emergence trap")+
+  #coord_flip() +
+  NULL
+
+ggsave(plot_emerge_cage_v_amb, file = "plots/plot_emerge_cage_v_amb.tiff", dpi = 600, width = 6.5, height = 7)
+
+
+
+
 # Plot diet --------------------------
 prop_plot <- all_diet_posts %>% 
   ungroup() %>% 
   mutate(species = fct_relevel(species, "Community", "Spotfin Shiner", "Bluegill"),
          date = ymd(date2),
+         data_level_ordered = case_when(grepl("a)", data_level_ordered) ~ "d) Per Community",
+                                        grepl("b)", data_level_ordered) ~ "e) Per Population",
+                                        TRUE ~ "f) Per capita"),
          dodge_manual = case_when(species == "Spotfin Shiner" ~ 0.5,
                                   species == "Bluegill" ~ 0.25,
                                   species == "Community" ~ 0,
@@ -62,47 +95,53 @@ prop_plot <- all_diet_posts %>%
                alpha = 0.5) +
   scale_color_colorblind() +
   scale_fill_colorblind() +
-  facet_wrap(~data_level) +
-  coord_cartesian(ylim = c(0, 1),
-                  xlim = c(as.Date("2017-06-12"), as.Date("2017-06-30"))) +
+  scale_y_log10(labels = comma, limits = c(0.001, 1)) +
+  facet_wrap(~data_level_ordered) +
+  coord_cartesian(xlim = c(as.Date("2017-06-12"), as.Date("2017-06-30"))) +
   labs(y = "Proportion pupae + adults",
-       x = "") +
-  guides(colour = guide_legend(override.aes = list(alpha = 1)))
+       x = "", 
+       color = "Species",
+       fill = "Species") +
+  guides(colour = guide_legend(override.aes = list(alpha = 1))) + 
+  theme(strip.text.x = element_text(hjust = -0.01))
 
 total_plot <- all_diet_posts %>% 
   ungroup() %>% 
   mutate(species = fct_relevel(species, "Community", "Spotfin Shiner", "Bluegill"),
+         data_level = fct_relevel(data_level, "Per community", "Per population"),
          date = ymd(date2),
          dodge_manual = case_when(species == "Spotfin Shiner" ~ 0.5,
                                   species == "Bluegill" ~ 0.25,
                                   species == "Community" ~ 0,
                                   species == "Largemouth Bass" ~ -0.25,
                                   TRUE ~ 0)) %>% 
-  ggplot(aes(x = date + dodge_manual, y = total*1000, fill = species)) +
+  ggplot(aes(x = date + dodge_manual, y = total, fill = species)) +
   theme_tidybayes() +
   geom_line(aes(group = interaction(species, .draw), color = species), alpha = 0.01) +
   stat_pointinterval(aes(group = interaction(species, date), color = species), 
                      alpha = 0.5) +
   scale_color_colorblind() +
   scale_fill_colorblind() +
-  facet_wrap(~data_level) +
-  scale_y_log10() +
+  facet_wrap(~data_level_ordered) +
+  scale_y_log10(labels = comma) +
   labs(y = "Total prey eaten (mgDM)",
-       x = "") +
-  coord_cartesian(xlim = c(as.Date("2017-06-12"), as.Date("2017-06-30"))) +
+       x = "",
+       color = "Species",
+       fill = "Species") +
+  coord_cartesian(xlim = c(as.Date("2017-06-12"), as.Date("2017-06-30"))) + 
+  theme(strip.text.x = element_text(hjust = -0.01)) +
   NULL
 
-legend <- get_legend(prop_plot + theme(legend.title = element_blank(),
-                                       legend.position = "top"))
+legend <- get_legend(prop_plot + theme(legend.position = "right"))
 
-prop_total <- plot_grid(total_plot + guides(color = "none", fill = "none"),
-                        prop_plot + guides(color = "none", fill = "none"),
+prop_total <- plot_grid(total_plot ,
+                        prop_plot ,
                         ncol = 1,
                         align = "vh")
 
-prop_total_legend <- plot_grid(legend, prop_total, ncol = 1, rel_heights = c(0.2, 1))
+prop_total_legend <- plot_grid(prop_total, ncol = 2, rel_widths = c(1, 0.4))
 
-ggsave(prop_total_legend, file = "plots/prop_total_legend.jpg", dpi = 300, width = 7, height = 6, units = "in")
+ggsave(prop_total, file = "plots/prop_total.jpg", dpi = 300, width = 7, height = 5, units = "in")
 
 
 # Plot emergence ----------------------------------------------------------

@@ -33,9 +33,8 @@ d_tot <- d %>%
   separate(prey_taxon, c("prey_taxon", "prey_stage")) %>% 
   mutate(prey_stage = case_when(prey_stage %in% c("a", "p") ~ "pa", TRUE ~ "not_pa")) %>% 
   group_by(id, species, date2, prey_stage) %>% 
-  summarize(mg_dmtotal01 = sum(mg_diet_dm) + 0.01) %>% 
-  mutate(g_dmtotal01 = mg_dmtotal01/1000) %>% 
-  arrange(-mg_dmtotal01)
+  summarize(mg_dmtotal = sum(mg_diet_dm)) %>% 
+  arrange(-mg_dmtotal)
 
 write_csv(d_tot, file = "data/derived_data/d_tot.csv")
 
@@ -73,6 +72,8 @@ fish_totals <- fish_community %>%
          species = case_when(species == "river_shiner" ~ "rivershiner",
                              species == "spotfin_shiner" ~ "spotfin",
                              TRUE ~ species)) 
+
+write_csv(fish_totals, file = "data/raw_data/fish_totals.csv")
 
 # Emergence ---------------------------------------------------------------
 # load data

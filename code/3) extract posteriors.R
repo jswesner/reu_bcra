@@ -5,16 +5,15 @@ source("src/packages.R")
 # diet model --------------------------------------------------------------
 
 diet_brms <- readRDS("models/diet_brms.rds")
+fish_totals <- read_csv(file = "data/raw_data/fish_totals.csv")
 
-diet_brm_postpreds <- d_tot %>%
-  ungroup() %>% 
-  data_grid(prey_stage, date2, species) %>% 
-  add_epred_draws(diet_brms, ndraws = 1000) %>% 
+diet_brm_postpreds <- diet_brms$data %>%
+  distinct(prey_stage, date2, species) %>% 
+  add_epred_draws(diet_brms, dpar = T, re_formula = NULL) %>% 
   filter(.draw <= 1000) %>% 
-  left_join(fish_totals) %>% 
+  left_join(fish_totals %>% mutate(date2 = as.factor(date2))) %>% 
   mutate(population_epred = .epred*total_abund) %>% 
-  arrange(-.epred) %>% 
-  print(n = 50)
+  arrange(-.epred) 
 
 # taxon_stage <- diet_brm_postpreds %>% ungroup() %>% distinct(prey_taxon) %>% 
 #   separate(prey_taxon, c("prey_taxon_only", "prey_stage"), remove = F)
